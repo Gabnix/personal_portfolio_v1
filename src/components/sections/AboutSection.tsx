@@ -57,7 +57,7 @@ export function AboutSection() {
                 <dt className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-1.5">
                   Education
                 </dt>
-                <dd className="text-sm text-foreground/75 leading-relaxed">
+                <dd className="text-sm text-muted-foreground leading-relaxed">
                   Bachelor of Computing (Computer Science)
                   <br />
                   Curtin University, 2022-2025

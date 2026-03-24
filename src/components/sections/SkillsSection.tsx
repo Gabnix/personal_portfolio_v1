@@ -22,16 +22,19 @@ export function SkillsSection() {
           </p>
         </AnimatedWrapper>
 
-        <dl className="space-y-5">
+        <dl className="space-y-6">
           {TOOLS.map(({ category, tools }, i) => (
             <AnimatedWrapper key={category} variant={fadeInUp} delay={i * 0.08}>
-              <div className="flex items-center gap-6">
+              <div className="flex items-baseline gap-6">
                 <dt className="w-36 sm:w-40 flex-shrink-0">
-                  <span className="font-sans font-medium text-xs text-muted-foreground uppercase tracking-[0.18em]">
+                  <span className="font-medium text-xs text-muted-foreground uppercase tracking-[0.18em]">
                     {category}
                   </span>
                 </dt>
-                <dd className="text-sm text-muted-foreground leading-none">
+                <dd
+                  className="text-muted-foreground leading-relaxed"
+                  style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
+                >
                   {tools.join(" · ")}
                 </dd>
               </div>
