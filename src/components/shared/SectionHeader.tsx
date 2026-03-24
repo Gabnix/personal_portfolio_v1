@@ -12,7 +12,7 @@ export function SectionHeader({ label, subtitle, overline, centered = false }: S
   return (
     <AnimatedWrapper variant={fadeInUp} className={centered ? "text-center" : ""}>
       {overline && (
-        <p className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-3">
+        <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-3">
           {overline}
         </p>
       )}

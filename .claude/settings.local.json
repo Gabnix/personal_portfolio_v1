@@ -9,7 +9,9 @@
       "Bash(OLD='font-medium text-\\\\[10px\\\\] uppercase tracking-\\\\[0\\\\.18em\\\\] text-muted-foreground')",
       "Bash(NEW='font-medium text-[12px] uppercase tracking-[0.18em] text-foreground\\\\/60')",
       "Bash(__NEW_LINE_37d006c29901aac6__ for:*)",
-      "Bash(do)"
+      "Bash(do)",
+      "Bash(npm install:*)",
+      "Bash(ls \"/Users/gabriel/Downloads/Personal Projects/personal_portfolio_v1\"/.env*)"
     ]
   }
 }
