@@ -17,7 +17,7 @@ export function SkillsSection() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
         <AnimatedWrapper variant={fadeInUp}>
-          <p className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-6">
+          <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-6">
             Stack
           </p>
         </AnimatedWrapper>
@@ -27,11 +27,11 @@ export function SkillsSection() {
             <AnimatedWrapper key={category} variant={fadeInUp} delay={i * 0.08}>
               <div className="flex items-center gap-6">
                 <dt className="w-36 sm:w-40 flex-shrink-0">
-                  <span className="font-sans font-medium text-[11px] text-foreground/50 uppercase tracking-[0.18em]">
+                  <span className="font-sans font-medium text-xs text-muted-foreground uppercase tracking-[0.18em]">
                     {category}
                   </span>
                 </dt>
-                <dd className="text-sm text-foreground/60 leading-none">
+                <dd className="text-sm text-muted-foreground leading-none">
                   {tools.join(" · ")}
                 </dd>
               </div>

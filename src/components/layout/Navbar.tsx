@@ -38,7 +38,7 @@ export function Navbar() {
         {/* Logo — matches page content alignment */}
         <Link
           href="/"
-          className="font-light text-foreground/80 hover:text-foreground transition-colors"
+          className="inline-flex items-center min-h-[44px] font-light text-foreground/80 hover:text-foreground transition-colors"
           style={{ letterSpacing: "-0.02em" }}
         >
           {SITE_NAME}
@@ -55,7 +55,7 @@ export function Navbar() {
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "text-sm transition-colors",
+                  "inline-flex items-center min-h-[44px] px-1 text-sm transition-colors",
                   isActive
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -89,7 +89,7 @@ export function Navbar() {
                       onClick={() => setMobileOpen(false)}
                       aria-current={isActive ? "page" : undefined}
                       className={cn(
-                        "px-4 py-2.5 rounded-lg text-sm transition-colors",
+                        "flex items-center min-h-[44px] px-4 rounded-lg text-sm transition-colors",
                         isActive
                           ? "text-foreground"
                           : "text-muted-foreground hover:text-foreground hover:bg-muted/60"

@@ -12,7 +12,7 @@ export function ExperienceSection() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
         <AnimatedWrapper variant={fadeInUp}>
-          <p className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-6">
+          <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-6">
             Experience
           </p>
         </AnimatedWrapper>
@@ -23,7 +23,7 @@ export function ExperienceSection() {
               <div className="grid md:grid-cols-[160px_1fr] gap-x-12 py-6 border-t border-foreground/5">
 
                 {/* ── Date ──────────────────────────────────────────────── */}
-                <p className="text-xs text-foreground/35 tabular-nums mb-3 md:mb-0 pt-px">
+                <p className="text-xs text-muted-foreground tabular-nums mb-3 md:mb-0 pt-px">
                   {entry.period}
                 </p>
 
@@ -35,11 +35,11 @@ export function ExperienceSection() {
                   >
                     {entry.role}
                   </Link>
-                  <p className="text-sm font-medium text-foreground/50 mt-0.5">
+                  <p className="text-sm font-medium text-muted-foreground mt-0.5">
                     {entry.company}
                   </p>
                   {entry.description.length === 1 ? (
-                    <p className="mt-3 text-sm text-foreground/50 leading-relaxed">
+                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
                       {entry.description[0]}
                     </p>
                   ) : (
@@ -47,7 +47,7 @@ export function ExperienceSection() {
                       {entry.description.map((line, j) => (
                         <li
                           key={j}
-                          className="text-sm text-foreground/50 leading-relaxed pl-3 relative before:absolute before:left-0 before:top-[0.6em] before:h-px before:w-1.5 before:bg-foreground/25"
+                          className="text-sm text-muted-foreground leading-relaxed pl-3 relative before:absolute before:left-0 before:top-[0.6em] before:h-px before:w-1.5 before:bg-muted-foreground/40"
                         >
                           {line}
                         </li>

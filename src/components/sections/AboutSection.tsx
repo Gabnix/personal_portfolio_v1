@@ -11,11 +11,11 @@ export function AboutSection() {
 
           {/* ── Editorial text ─────────────────────────────────────────── */}
           <AnimatedWrapper variant={fadeInUp}>
-            <p className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-6">
+            <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-6">
               Background
             </p>
             <div
-              className="space-y-5 text-foreground/65 leading-relaxed"
+              className="space-y-5 text-muted-foreground leading-relaxed"
               style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
             >
               <p>
@@ -40,21 +40,21 @@ export function AboutSection() {
           <AnimatedWrapper variant={fadeInUp} delay={0.15}>
             <dl className="space-y-6">
               <div>
-                <dt className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-1.5">
+                <dt className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-1.5">
                   Focus
                 </dt>
-                <dd className="text-sm text-foreground/75">
+                <dd className="text-sm text-muted-foreground">
                   High-performance web systems
                 </dd>
               </div>
               <div>
-                <dt className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-1.5">
+                <dt className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-1.5">
                   Location
                 </dt>
-                <dd className="text-sm text-foreground/75">Perth, Western Australia</dd>
+                <dd className="text-sm text-muted-foreground">Perth, Western Australia</dd>
               </div>
               <div>
-                <dt className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-1.5">
+                <dt className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-1.5">
                   Education
                 </dt>
                 <dd className="text-sm text-foreground/75 leading-relaxed">
@@ -64,15 +64,15 @@ export function AboutSection() {
                 </dd>
               </div>
               <div>
-                <dt className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-1.5">
+                <dt className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-1.5">
                   Interests
                 </dt>
-                <dd className="text-sm text-foreground/75">
+                <dd className="text-sm text-muted-foreground">
                   Open source · design systems · music · reading
                 </dd>
               </div>
               {/* <div>
-                <dt className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-1.5">
+                <dt className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-1.5">
                   Status
                 </dt>
                 <dd className="flex items-center gap-2">
