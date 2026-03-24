@@ -27,7 +27,7 @@ export function HeroSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Jim Hie
+            Jim Ling
           </h1>
           <p
             className="font-display font-light text-muted-foreground mt-4"

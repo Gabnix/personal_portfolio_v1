@@ -1,9 +1,9 @@
 import type { NavLink } from "@/types";
 
-export const SITE_NAME = "Jim Hie";
-export const SITE_TITLE = "Jim Hie";
+export const SITE_NAME = "Jim Ling";
+export const SITE_TITLE = "Jim Ling";
 export const SITE_DESCRIPTION =
-  "Personal portfolio of Jim Hie, a software engineer who builds modern web experiences.";
+  "Personal portfolio of Jim Ling, a software engineer who builds modern web experiences.";
 
 export const NAV_LINKS: NavLink[] = [
   { label: "About", href: "/#about" },

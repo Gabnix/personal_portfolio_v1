@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const entry = getExperienceBySlug(slug);
-  return { title: entry ? `${entry.role} — Jim Hie` : "Not Found" };
+  return { title: entry ? `${entry.role} — Jim Ling` : "Not Found" };
 }
 
 export default async function ExperienceDetailPage({ params }: Props) {

@@ -23,7 +23,7 @@ export function ExperienceSection() {
               <div className="grid md:grid-cols-[160px_1fr] gap-x-12 py-8 border-t border-foreground/5">
 
                 {/* ── Date ──────────────────────────────────────────────── */}
-                <p className="text-sm text-muted-foreground tabular-nums mb-3 md:mb-0 pt-1">
+                <p className="text-base text-muted-foreground tabular-nums mb-3 md:mb-0 pt-1">
                   {entry.period}
                 </p>
 

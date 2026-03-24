@@ -5,7 +5,7 @@ import { fadeInUp } from "@/lib/animations";
 import { experience } from "@/data/experience";
 
 export const metadata: Metadata = {
-  title: "Experience — Jim Hie",
+  title: "Experience — Jim Ling",
 };
 
 export default function ExperiencePage() {
@@ -25,7 +25,7 @@ export default function ExperiencePage() {
           <AnimatedWrapper key={entry.slug} variant={fadeInUp} delay={i * 0.08}>
             <div className="grid md:grid-cols-[160px_1fr] gap-x-12 py-8 border-t border-foreground/5">
 
-              <p className="text-xs text-muted-foreground tabular-nums mb-3 md:mb-0 pt-1">
+              <p className="text-base text-muted-foreground tabular-nums mb-3 md:mb-0 pt-1">
                 {entry.period}
               </p>
 
