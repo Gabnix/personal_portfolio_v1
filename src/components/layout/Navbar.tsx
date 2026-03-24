@@ -15,18 +15,78 @@ import {
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function Navbar() {
   const pathname = usePathname();
   const { scrolled } = useScrollProgress();
   const [mobileOpen, setMobileOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const suppressObserverRef = useRef(false);
+  const suppressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Track which section is in view on the home page
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection(null);
+      return;
+    }
+
+    const sectionIds = [
+      ...NAV_LINKS.filter((l) => l.href.startsWith("/#")).map((l) => l.href.slice(2)),
+      "contact", // also watch the contact section on the home page
+    ];
+
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !suppressObserverRef.current) {
+            setActiveSection(id);
+          }
+        },
+        { rootMargin: "-40% 0px -50% 0px" }
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, [pathname]);
+
+  const isLinkActive = (href: string) => {
+    if (href.startsWith("/#")) {
+      return pathname === "/" && activeSection === href.slice(2);
+    }
+    // Highlight /contact when scrolled to the contact section on home page too
+    if (href === "/contact") {
+      return pathname === "/contact" || (pathname === "/" && activeSection === "contact");
+    }
+    return pathname === href;
+  };
+
+  const handleHashLinkClick = (sectionId: string) => {
+    // Immediately set the target section and suppress observer during scroll
+    setActiveSection(sectionId);
+    suppressObserverRef.current = true;
+    if (suppressTimerRef.current) clearTimeout(suppressTimerRef.current);
+    suppressTimerRef.current = setTimeout(() => {
+      suppressObserverRef.current = false;
+    }, 1000);
+  };
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === "/") {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveSection(null);
+      window.history.pushState(null, "", "/");
+      window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
     }
   };
 
@@ -60,21 +120,22 @@ export function Navbar() {
           </motion.span>
         </Link>
 
-        {/* Desktop nav — mono text links, no pills */}
+        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => {
-            const isRoute = !link.href.startsWith("/#");
-            const isActive = isRoute && pathname === link.href;
+            const isActive = isLinkActive(link.href);
+            const sectionId = link.href.startsWith("/#") ? link.href.slice(2) : null;
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
+                onClick={sectionId ? () => handleHashLinkClick(sectionId) : undefined}
                 className={cn(
-                  "inline-flex items-center min-h-[44px] px-1 text-sm transition-colors",
+                  "inline-flex items-center min-h-[44px] px-1 text-sm border-b-2 transition-all",
                   isActive
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-foreground border-foreground"
+                    : "text-muted-foreground border-transparent hover:text-foreground"
                 )}
               >
                 {link.label}
@@ -96,19 +157,22 @@ export function Navbar() {
               <SheetTitle className="sr-only">Navigation</SheetTitle>
               <div className="flex flex-col gap-1 mt-8">
                 {NAV_LINKS.map((link) => {
-                  const isRoute = !link.href.startsWith("/#");
-                  const isActive = isRoute && pathname === link.href;
+                  const isActive = isLinkActive(link.href);
+                  const sectionId = link.href.startsWith("/#") ? link.href.slice(2) : null;
                   return (
                     <Link
                       key={link.href}
                       href={link.href}
-                      onClick={() => setMobileOpen(false)}
+                      onClick={() => {
+                        setMobileOpen(false);
+                        if (sectionId) handleHashLinkClick(sectionId);
+                      }}
                       aria-current={isActive ? "page" : undefined}
                       className={cn(
-                        "flex items-center min-h-[44px] px-4 rounded-lg text-sm transition-colors",
+                        "flex items-center min-h-[44px] px-4 rounded-lg text-sm transition-all",
                         isActive
-                          ? "text-foreground"
-                          : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
+                          ? "text-foreground font-medium"
+                          : "text-muted-foreground font-normal hover:text-foreground hover:bg-muted/60"
                       )}
                     >
                       {link.label}

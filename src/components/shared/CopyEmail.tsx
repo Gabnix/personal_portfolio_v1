@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { MotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -21,6 +21,8 @@ export function CopyEmail({
   transition,
 }: CopyEmailProps) {
   const [copied, setCopied] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const shouldReduceMotion = useReducedMotion();
 
@@ -28,6 +30,10 @@ export function CopyEmail({
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
+  }, []);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    setPos({ x: e.clientX, y: e.clientY });
   }, []);
 
   function handleClick() {
@@ -39,34 +45,41 @@ export function CopyEmail({
   }
 
   return (
-    <span className="relative inline-flex">
-      <motion.button
-        type="button"
-        onClick={handleClick}
-        className={cn("cursor-copy", className)}
-        aria-label={ariaLabel ?? `Copy ${email} to clipboard`}
-        whileHover={shouldReduceMotion ? undefined : whileHover}
-        transition={transition}
-      >
-        {children}
-      </motion.button>
+    <>
+      <span className="relative inline-flex">
+        <motion.button
+          type="button"
+          onClick={handleClick}
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          className={cn(className)}
+          aria-label={ariaLabel ?? `Copy ${email} to clipboard`}
+          whileHover={shouldReduceMotion ? undefined : whileHover}
+          transition={transition}
+        >
+          {children}
+        </motion.button>
+      </span>
 
+      {/* Custom cursor label — rendered at root level via portal-like fixed position */}
       <AnimatePresence>
-        {copied && (
+        {hovered && !shouldReduceMotion && (
           <motion.span
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{
-              duration: shouldReduceMotion ? 0.01 : 0.25,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none font-sans font-medium text-[12px] uppercase tracking-[0.18em] text-muted-foreground"
+            key="cursor-label"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed z-[999] pointer-events-none"
+            style={{ left: pos.x + 14, top: pos.y - 10 }}
           >
-            Copied
+            <span className="inline-flex items-center gap-1 rounded-full bg-foreground px-2.5 py-1 font-sans font-medium text-[11px] uppercase tracking-[0.12em] text-background">
+              {copied ? "Copied" : "Copy"}
+            </span>
           </motion.span>
         )}
       </AnimatePresence>
-    </span>
+    </>
   );
 }

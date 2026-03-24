@@ -12,9 +12,6 @@ export default function ExperiencePage() {
   return (
     <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
       <AnimatedWrapper variant={fadeInUp}>
-        <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-3">
-          History
-        </p>
         <h1
           className="font-display font-medium leading-tight text-foreground"
           style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", letterSpacing: "-0.03em" }}

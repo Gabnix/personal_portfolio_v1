@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Inter_Tight } from "next/font/google";
+import { DM_Sans, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/layout/Providers";
 import { Navbar } from "@/components/layout/Navbar";
@@ -7,16 +7,16 @@ import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/lib/constants";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
 
-const interTight = Inter_Tight({
+const bricolage = Bricolage_Grotesque({
   variable: "--font-inter-tight",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${interTight.variable} antialiased`} suppressHydrationWarning>
+      <body className={`${dmSans.variable} ${bricolage.variable} antialiased`} suppressHydrationWarning>
         <Providers>
           {/* Skip-to-content: invisible until focused, satisfies WCAG 2.4.1 */}
           <a

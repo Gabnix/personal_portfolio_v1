@@ -14,7 +14,7 @@ type FormState = "idle" | "loading" | "success" | "error";
 
 const FIELD_BASE =
   "w-full bg-transparent border-b border-foreground/10 py-3 min-h-[44px] text-foreground " +
-  "placeholder:text-muted-foreground/50 focus:outline-none focus:border-foreground/40 " +
+  "placeholder:text-muted-foreground/50 placeholder:text-sm focus:outline-none focus:border-foreground/40 " +
   "transition-colors font-sans";
 
 function ContactForm() {
@@ -125,9 +125,6 @@ function ContactForm() {
 
         {/* ── Left: editorial heading ──────────────────────────────── */}
         <AnimatedWrapper variant={fadeInUp}>
-          <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-6">
-            Get In Touch
-          </p>
           <h1
             className="font-display font-light text-foreground leading-[0.92]"
             style={{
@@ -135,25 +132,25 @@ function ContactForm() {
               letterSpacing: "-0.03em",
             }}
           >
-            Let&apos;s work<br />together.
+            Let&apos;s start a<br />conversation.
           </h1>
           <p
-            className="mt-6 text-muted-foreground leading-relaxed"
-            style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
+            className="mt-6 text-muted-foreground leading-relaxed max-w-xs"
+            style={{ fontSize: "clamp(0.9375rem, 2vw, 1rem)" }}
           >
-            Have a project in mind or just want to say hello? Drop me a line.
+            Whether it&apos;s about job opportunities or potential collaborations, I&apos;ll get back to you within 24 hours.
           </p>
         </AnimatedWrapper>
 
         {/* ── Right: form ─────────────────────────────────────────── */}
-        <AnimatedWrapper variant={fadeInUp} delay={0.15}>
-          <form
-            ref={formRef}
-            onSubmit={handleSubmit}
-            noValidate
-            className="space-y-8"
-          >
-            {/* Name */}
+        <form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          noValidate
+          className="space-y-8"
+        >
+          {/* Name */}
+          <AnimatedWrapper variant={fadeInUp} delay={0.1}>
             <div className="space-y-2">
               <label
                 htmlFor="from_name"
@@ -172,8 +169,10 @@ function ContactForm() {
                 style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
               />
             </div>
+          </AnimatedWrapper>
 
-            {/* Email */}
+          {/* Email */}
+          <AnimatedWrapper variant={fadeInUp} delay={0.2}>
             <div className="space-y-2">
               <label
                 htmlFor="from_email"
@@ -192,8 +191,10 @@ function ContactForm() {
                 style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
               />
             </div>
+          </AnimatedWrapper>
 
-            {/* Message */}
+          {/* Message */}
+          <AnimatedWrapper variant={fadeInUp} delay={0.3}>
             <div className="space-y-2">
               <label
                 htmlFor="message"
@@ -211,19 +212,21 @@ function ContactForm() {
                 style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
               />
             </div>
+          </AnimatedWrapper>
 
-            {/* Error message */}
-            {formState === "error" && errorMsg && (
-              <p className="text-sm text-destructive leading-relaxed">
-                {errorMsg}
-              </p>
-            )}
+          {/* Error message */}
+          {formState === "error" && errorMsg && (
+            <p className="text-sm text-destructive leading-relaxed">
+              {errorMsg}
+            </p>
+          )}
 
-            {/* Submit */}
+          {/* Submit */}
+          <AnimatedWrapper variant={fadeInUp} delay={0.4}>
             <button
               type="submit"
               disabled={formState === "loading"}
-              className="inline-flex items-center min-h-[44px] gap-2 text-sm font-medium text-foreground/90 hover:text-foreground transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              className="inline-flex items-center min-h-[44px] gap-2 text-base font-medium text-foreground/90 hover:text-foreground hover:gap-3 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {formState === "loading" ? (
                 "Sending..."
@@ -234,8 +237,8 @@ function ContactForm() {
                 </>
               )}
             </button>
-          </form>
-        </AnimatedWrapper>
+          </AnimatedWrapper>
+        </form>
 
       </div>
     </div>

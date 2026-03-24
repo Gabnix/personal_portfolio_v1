@@ -12,7 +12,7 @@ export function AboutSection() {
           {/* ── Editorial text ─────────────────────────────────────────── */}
           <AnimatedWrapper variant={fadeInUp}>
             <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-6">
-              Background
+              About me
             </p>
             <div
               className="space-y-5 text-muted-foreground leading-relaxed"

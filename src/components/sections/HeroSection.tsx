@@ -54,34 +54,28 @@ export function HeroSection() {
           {...entry(0.35)}
           className="mt-12 flex items-center gap-1"
         >
-          <motion.a
+          <a
             href={SOCIAL_LINKS.github}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center h-11 w-11 -m-1 rounded-lg text-muted-foreground hero-social-icon"
             aria-label="GitHub"
-            whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             <Github className="h-5 w-5" aria-hidden="true" />
-          </motion.a>
-          <motion.a
+          </a>
+          <a
             href={SOCIAL_LINKS.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center h-11 w-11 -m-1 rounded-lg text-muted-foreground hero-social-icon"
             aria-label="LinkedIn"
-            whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             <Linkedin className="h-5 w-5" aria-hidden="true" />
-          </motion.a>
+          </a>
           <CopyEmail
             email={SITE_EMAIL}
-            className="inline-flex items-center justify-center h-11 w-11 -m-1 rounded-lg text-muted-foreground hero-social-icon"
+            className="inline-flex items-center justify-center h-11 w-11 -m-1 rounded-lg text-muted-foreground hero-social-icon cursor-pointer"
             aria-label="Copy email address"
-            whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             <Mail className="h-5 w-5" aria-hidden="true" />
           </CopyEmail>

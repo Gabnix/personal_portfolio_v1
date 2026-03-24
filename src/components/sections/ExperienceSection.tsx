@@ -23,7 +23,7 @@ export function ExperienceSection() {
               <div className="grid md:grid-cols-[160px_1fr] gap-x-12 py-8 border-t border-foreground/5">
 
                 {/* ── Date ──────────────────────────────────────────────── */}
-                <p className="text-xs text-muted-foreground tabular-nums mb-3 md:mb-0 pt-1">
+                <p className="text-sm text-muted-foreground tabular-nums mb-3 md:mb-0 pt-1">
                   {entry.period}
                 </p>
 
@@ -68,7 +68,7 @@ export function ExperienceSection() {
 
         <Link
           href="/experience"
-          className="inline-flex items-center min-h-[44px] gap-1.5 mt-4 text-xs text-muted-foreground hover:text-foreground transition-colors"
+          className="inline-flex items-center min-h-[44px] gap-1.5 mt-4 text-base font-medium text-foreground/90 hover:text-foreground hover:gap-3 transition-all cursor-pointer"
         >
           Full history <ArrowRight className="h-3 w-3" aria-hidden="true" />
         </Link>

@@ -12,28 +12,28 @@ export function ContactSection() {
     <section id="contact" className="pt-40 pb-48">
       <div className="max-w-5xl mx-auto px-6">
         <AnimatedWrapper variant={fadeInUp}>
-          <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-6">
-            Let&apos;s talk
+          <p className="font-medium text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-6">
+            Contact Me
           </p>
           <h2
-            className="font-display font-light text-foreground leading-[0.92]"
-            style={{ fontSize: "clamp(2.5rem, 7vw, 5.5rem)", letterSpacing: "-0.035em" }}
+            className="font-display font-medium text-foreground leading-snug"
+            style={{ fontSize: "clamp(1.5rem, 4vw, 2rem)", letterSpacing: "-0.02em" }}
           >
-            Ready to build
+            Job opportunities or collaborations?
             <br />
-            <span className="text-muted-foreground">something great?</span>
+            <span className="text-muted-foreground">I&apos;d like to hear about it.</span>
           </h2>
 
           <div className="mt-12 flex flex-wrap items-center gap-6">
             <Link
               href="/contact"
-              className="inline-flex items-center min-h-[44px] gap-2 text-sm font-medium text-foreground/90 hover:text-foreground transition-colors"
+              className="inline-flex items-center min-h-[44px] gap-2 text-base font-medium text-foreground/90 hover:text-foreground hover:gap-3 transition-all cursor-pointer"
             >
               Send a message <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
             </Link>
             <CopyEmail
               email={SITE_EMAIL}
-              className="inline-flex items-center min-h-[44px] gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="inline-flex items-center min-h-[44px] gap-2 text-base font-medium text-foreground/90 hover:text-foreground hover:gap-3 transition-all cursor-pointer"
               aria-label="Copy email address"
             >
               or email directly <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />

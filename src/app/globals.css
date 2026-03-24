@@ -143,12 +143,14 @@
   }
 }
 
-/* ── Hero social icon bloom ─────────────────────────────────────── */
+/* ── Hero social icon hover ─────────────────────────────────────── */
 .hero-social-icon {
-  transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .hero-social-icon:hover {
-  color: var(--indigo-accent);
+  color: var(--foreground);
+  transform: translateY(-2px);
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-social-icon {
