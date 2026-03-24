@@ -11,7 +11,8 @@
       "Bash(__NEW_LINE_37d006c29901aac6__ for:*)",
       "Bash(do)",
       "Bash(npm install:*)",
-      "Bash(ls \"/Users/gabriel/Downloads/Personal Projects/personal_portfolio_v1\"/.env*)"
+      "Bash(ls \"/Users/gabriel/Downloads/Personal Projects/personal_portfolio_v1\"/.env*)",
+      "Bash(npm uninstall:*)"
     ]
   }
 }
