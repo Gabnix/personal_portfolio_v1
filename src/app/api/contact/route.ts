@@ -1,10 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // ---------------------------------------------------------------------------
-// Simple in-memory rate limiter — resets per serverless cold start.
+// In-memory rate limiter stored on globalThis so it survives Next.js HMR
+// reloads in dev and persists within a warm serverless instance in production.
 // Sufficient for a personal portfolio; swap for Redis/Upstash for multi-instance.
 // ---------------------------------------------------------------------------
-const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+declare global {
+  // eslint-disable-next-line no-var
+  var rateLimitMap: Map<string, { count: number; resetAt: number }> | undefined;
+}
+const rateLimitMap = (globalThis.rateLimitMap ??= new Map<
+  string,
+  { count: number; resetAt: number }
+>());
 const RATE_LIMIT = 3; // max submissions per window
 const RATE_WINDOW_MS = 60 * 60 * 1000; // 1 hour
 
@@ -128,8 +136,9 @@ export async function POST(req: NextRequest) {
   const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
   const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
   const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+  const privateKey = process.env.EMAILJS_PRIVATE_KEY;
 
-  if (!serviceId || !templateId || !publicKey) {
+  if (!serviceId || !templateId || !publicKey || !privateKey) {
     return NextResponse.json(
       { error: "Email service is not configured." },
       { status: 500 }
@@ -143,6 +152,7 @@ export async function POST(req: NextRequest) {
       service_id: serviceId,
       template_id: templateId,
       user_id: publicKey,
+      accessToken: privateKey,
       template_params: {
         from_name: sanitize(fromName),
         from_email: sanitize(fromEmail),
@@ -152,6 +162,8 @@ export async function POST(req: NextRequest) {
   });
 
   if (!emailRes.ok) {
+    const errBody = await emailRes.text();
+    console.error("[EmailJS error]", emailRes.status, errBody);
     return NextResponse.json(
       { error: "Failed to send message. Please try again." },
       { status: 500 }

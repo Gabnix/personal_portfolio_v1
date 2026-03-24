@@ -246,11 +246,7 @@ export default function ContactPage() {
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   if (!siteKey) {
-    return (
-      <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
-        <ContactForm />
-      </div>
-    );
+    return <ContactForm />;
   }
 
   return (
