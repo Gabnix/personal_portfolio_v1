@@ -42,7 +42,7 @@ export default function RootLayout({
             Skip to content
           </a>
           <Navbar />
-          <main id="main-content">{children}</main>
+          <main id="main-content" className="min-h-screen">{children}</main>
           <Footer />
           <Toaster />
         </Providers>
