@@ -57,6 +57,7 @@ function ContactForm() {
   /* ── Success state ──────────────────────────────────────────────── */
   if (formState === "success") {
     return (
+      <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
       <AnimatedWrapper variant={fadeInUp}>
         <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-6">
           Message Sent
@@ -84,6 +85,7 @@ function ContactForm() {
           Back to home
         </Link>
       </AnimatedWrapper>
+      </div>
     );
   }
 
