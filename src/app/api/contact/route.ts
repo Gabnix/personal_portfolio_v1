@@ -1,10 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
 
 // ---------------------------------------------------------------------------
-// In-memory rate limiter stored on globalThis so it survives Next.js HMR
-// reloads in dev and persists within a warm serverless instance in production.
-// Sufficient for a personal portfolio; swap for Redis/Upstash for multi-instance.
+// Rate limiter — uses Upstash Redis in production (works across all serverless
+// instances), falls back to in-memory for local dev when env vars are absent.
 // ---------------------------------------------------------------------------
+const RATE_LIMIT = 3;
+const RATE_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+
+let upstashLimiter: Ratelimit | null = null;
+if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+  upstashLimiter = new Ratelimit({
+    redis: Redis.fromEnv(),
+    limiter: Ratelimit.fixedWindow(RATE_LIMIT, "1 h"),
+    prefix: "contact_rl",
+  });
+}
+
+// In-memory fallback for local dev
 declare global {
   // eslint-disable-next-line no-var
   var rateLimitMap: Map<string, { count: number; resetAt: number }> | undefined;
@@ -13,20 +27,21 @@ const rateLimitMap = (globalThis.rateLimitMap ??= new Map<
   string,
   { count: number; resetAt: number }
 >());
-const RATE_LIMIT = 3; // max submissions per window
-const RATE_WINDOW_MS = 60 * 60 * 1000; // 1 hour
 
-function isRateLimited(ip: string): boolean {
+async function isRateLimited(ip: string): Promise<boolean> {
+  if (upstashLimiter) {
+    const { success } = await upstashLimiter.limit(ip);
+    return !success;
+  }
+
+  // Fallback: in-memory
   const now = Date.now();
   const record = rateLimitMap.get(ip);
-
   if (!record || now > record.resetAt) {
     rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_WINDOW_MS });
     return false;
   }
-
   if (record.count >= RATE_LIMIT) return true;
-
   record.count++;
   return false;
 }
@@ -52,7 +67,7 @@ export async function POST(req: NextRequest) {
     req.headers.get("x-real-ip") ??
     "unknown";
 
-  if (isRateLimited(ip)) {
+  if (await isRateLimited(ip)) {
     return NextResponse.json(
       { error: "Too many requests. Please try again later." },
       { status: 429 }
