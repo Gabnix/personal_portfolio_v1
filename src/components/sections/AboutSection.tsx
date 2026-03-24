@@ -6,7 +6,7 @@ import { fadeInUp } from "@/lib/animations";
 export function AboutSection() {
   return (
     <section id="about" className="pt-24 pb-32">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <div className="grid md:grid-cols-[1fr_200px] gap-16 items-start">
 
           {/* ── Editorial text ─────────────────────────────────────────── */}
@@ -71,18 +71,6 @@ export function AboutSection() {
                   Open source · design systems · music · reading
                 </dd>
               </div>
-              {/* <div>
-                <dt className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-1.5">
-                  Status
-                </dt>
-                <dd className="flex items-center gap-2">
-                  <span
-                    className="h-1.5 w-1.5 rounded-full bg-indigo-accent flex-shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span className="text-sm text-foreground/75">Open to opportunities</span>
-                </dd>
-              </div> */}
             </dl>
           </AnimatedWrapper>
 

@@ -16,7 +16,7 @@ export function HeroSection() {
 
   return (
     <section className="min-h-screen flex flex-col justify-center pt-28 pb-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 w-full">
+      <div className="max-w-5xl mx-auto px-6 w-full">
 
         {/* ── Name + Role ─────────────────────────────────────────────── */}
         <motion.div {...entry(0)}>
@@ -46,8 +46,7 @@ export function HeroSection() {
           className="mt-6 text-muted-foreground leading-relaxed max-w-lg"
           style={{ fontSize: "clamp(1rem, 2vw, 1.0625rem)" }}
         >
-          Building high-performance web systems, from distributed backends
-          to precise, crafted UIs.
+          I build fast, reliable web systems, with a focus on clean architecture and thoughtfully crafted UIs.
         </motion.p>
 
         {/* ── Social links — primary position ────────────────────────── */}

@@ -9,7 +9,7 @@ import { experience } from "@/data/experience";
 export function ExperienceSection() {
   return (
     <section id="experience" className="py-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto px-6">
 
         <AnimatedWrapper variant={fadeInUp}>
           <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-6">
@@ -68,7 +68,7 @@ export function ExperienceSection() {
 
         <Link
           href="/experience"
-          className="inline-flex items-center gap-1.5 mt-8 text-xs text-muted-foreground hover:text-foreground transition-colors"
+          className="inline-flex items-center min-h-[44px] gap-1.5 mt-4 text-xs text-muted-foreground hover:text-foreground transition-colors"
         >
           Full history <ArrowRight className="h-3 w-3" aria-hidden="true" />
         </Link>

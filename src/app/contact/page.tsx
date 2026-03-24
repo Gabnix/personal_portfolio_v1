@@ -12,7 +12,7 @@ import { fadeInUp } from "@/lib/animations";
 type FormState = "idle" | "loading" | "success" | "error";
 
 const FIELD_BASE =
-  "w-full bg-transparent border-b border-foreground/10 py-3 text-foreground " +
+  "w-full bg-transparent border-b border-foreground/10 py-3 min-h-[44px] text-foreground " +
   "placeholder:text-muted-foreground/50 focus:outline-none focus:border-foreground/40 " +
   "transition-colors font-sans";
 
@@ -54,7 +54,7 @@ export default function ContactPage() {
   /* ── Success state ──────────────────────────────────────────────── */
   if (formState === "success") {
     return (
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-32 pb-24">
+      <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
         <AnimatedWrapper variant={fadeInUp}>
           <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-6">
             Message Sent
@@ -88,7 +88,7 @@ export default function ContactPage() {
 
   /* ── Form ───────────────────────────────────────────────────────── */
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-32 pb-24">
+    <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
       <div className="grid md:grid-cols-2 gap-16 items-start">
 
         {/* ── Left: editorial heading ──────────────────────────────── */}
@@ -174,7 +174,7 @@ export default function ContactPage() {
                 name="message"
                 required
                 rows={5}
-                placeholder="What&apos;s on your mind?"
+                placeholder="What's on your mind?"
                 className={`${FIELD_BASE} resize-none`}
                 style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
               />

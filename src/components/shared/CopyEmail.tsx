@@ -61,7 +61,7 @@ export function CopyEmail({
               duration: shouldReduceMotion ? 0.01 : 0.25,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none font-sans font-medium text-[10px] uppercase tracking-[0.18em] text-muted-foreground"
+            className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none font-sans font-medium text-[12px] uppercase tracking-[0.18em] text-muted-foreground"
           >
             Copied
           </motion.span>

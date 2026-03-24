@@ -42,7 +42,7 @@ export function Navbar() {
           : "bg-transparent"
       )}
     >
-      <nav className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo — home anchor with smooth-scroll on / */}
         <Link
           href="/"

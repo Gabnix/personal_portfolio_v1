@@ -26,11 +26,11 @@ export default async function ExperienceDetailPage({ params }: Props) {
   if (!entry) notFound();
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-32 pb-24">
+    <div className="max-w-3xl mx-auto px-6 pt-32 pb-24">
       <AnimatedWrapper>
         <Link
           href="/experience"
-          className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+          className="inline-flex items-center min-h-[44px] gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-3 w-3" aria-hidden="true" />
           All experience

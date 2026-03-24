@@ -10,7 +10,7 @@ import { SITE_EMAIL } from "@/lib/constants";
 export function ContactSection() {
   return (
     <section id="contact" className="pt-40 pb-48">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <AnimatedWrapper variant={fadeInUp}>
           <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-6">
             Let&apos;s talk
