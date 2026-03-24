@@ -10,9 +10,11 @@ const RATE_LIMIT = 3;
 const RATE_WINDOW_MS = 60 * 60 * 1000; // 1 hour
 
 let upstashLimiter: Ratelimit | null = null;
-if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+const redisUrl = process.env.KV_REST_API_URL ?? process.env.UPSTASH_REDIS_REST_URL;
+const redisToken = process.env.KV_REST_API_TOKEN ?? process.env.UPSTASH_REDIS_REST_TOKEN;
+if (redisUrl && redisToken) {
   upstashLimiter = new Ratelimit({
-    redis: Redis.fromEnv(),
+    redis: new Redis({ url: redisUrl, token: redisToken }),
     limiter: Ratelimit.fixedWindow(RATE_LIMIT, "1 h"),
     prefix: "contact_rl",
   });
