@@ -2,7 +2,6 @@
 
 import { useRef, useState, useCallback } from "react";
 import Link from "next/link";
-import emailjs from "@emailjs/browser";
 import {
   GoogleReCaptchaProvider,
   useGoogleReCaptcha,
@@ -29,25 +28,55 @@ function ContactForm() {
       e.preventDefault();
       if (!formRef.current) return;
 
+      const form = formRef.current;
+      const name = (form.elements.namedItem("from_name") as HTMLInputElement).value.trim();
+      const email = (form.elements.namedItem("from_email") as HTMLInputElement).value.trim();
+      const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
+
+      // Client-side validation
+      if (!name || !email || !message) {
+        setFormState("error");
+        setErrorMsg("All fields are required.");
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setFormState("error");
+        setErrorMsg("Please enter a valid email address.");
+        return;
+      }
+      if (message.length > 5000) {
+        setFormState("error");
+        setErrorMsg("Message is too long (max 5000 characters).");
+        return;
+      }
+
       setFormState("loading");
       setErrorMsg("");
 
       try {
+        let recaptchaToken: string | undefined;
         if (executeRecaptcha) {
-          await executeRecaptcha("contact_form");
+          recaptchaToken = await executeRecaptcha("contact_form");
         }
 
-        await emailjs.sendForm(
-          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-          formRef.current,
-          { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! }
-        );
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ from_name: name, from_email: email, message, recaptchaToken }),
+        });
+
+        if (!res.ok) {
+          const data = (await res.json()) as { error?: string };
+          throw new Error(data.error ?? "Something went wrong.");
+        }
+
         setFormState("success");
-      } catch {
+      } catch (err) {
         setFormState("error");
         setErrorMsg(
-          "Something went wrong. Please try again or email me directly."
+          err instanceof Error
+            ? err.message
+            : "Something went wrong. Please try again or email me directly."
         );
       }
     },
