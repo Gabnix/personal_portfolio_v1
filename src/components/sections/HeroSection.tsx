@@ -1,92 +1,94 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowRight, Github, Linkedin } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { SOCIAL_LINKS } from "@/lib/constants";
+import { motion, useReducedMotion } from "framer-motion";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { SOCIAL_LINKS, SITE_EMAIL } from "@/lib/constants";
+import { CopyEmail } from "@/components/shared/CopyEmail";
 
 export function HeroSection() {
+  const shouldReduceMotion = useReducedMotion();
+
+  const entry = (delay: number) => ({
+    initial: { opacity: 0, y: shouldReduceMotion ? 0 : 18 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const, delay },
+  });
+
   return (
-    <section className="min-h-screen flex items-center pt-16">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-24">
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="text-primary font-medium mb-4"
-        >
-          Hi, I&apos;m
-        </motion.p>
+    <section className="min-h-screen flex flex-col justify-center pt-28 pb-24">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 w-full">
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight"
-        >
-          Gabriel
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-          className="mt-4 text-2xl sm:text-3xl text-muted-foreground font-medium"
-        >
-          Software Engineer
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
-          className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed"
-        >
-          I build modern, performant web applications with a focus on clean code
-          and great user experiences.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
-          className="mt-10 flex flex-wrap items-center gap-4"
-        >
-          <Link href="/projects" className={cn(buttonVariants({ size: "lg" }))}>
-            View Projects <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
-          <Link href="/contact" className={cn(buttonVariants({ variant: "outline", size: "lg" }))}>
-            Get in touch
-          </Link>
+        {/* ── Name + Role ─────────────────────────────────────────────── */}
+        <motion.div {...entry(0)}>
+          <h1
+            className="font-display font-semibold leading-none text-foreground/90"
+            style={{
+              fontSize: "clamp(1.75rem, 4vw, 3rem)",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Jim Hie
+          </h1>
+          <p
+            className="font-display font-light text-muted-foreground mt-4"
+            style={{
+              fontSize: "clamp(1.25rem, 3.5vw, 2.25rem)",
+              letterSpacing: "-0.03em",
+            }}
+          >
+            Software Engineer
+          </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-10 flex items-center gap-4"
+        {/* ── Static focus line — replaces rotating ticker ────────────── */}
+        <motion.p
+          {...entry(0.2)}
+          className="mt-6 text-muted-foreground leading-relaxed max-w-lg"
+          style={{ fontSize: "clamp(1rem, 2vw, 1.0625rem)" }}
         >
-          <a
+          Building high-performance web systems, from distributed backends
+          to precise, crafted UIs.
+        </motion.p>
+
+        {/* ── Social links — primary position ────────────────────────── */}
+        <motion.div
+          {...entry(0.35)}
+          className="mt-12 flex items-center gap-1"
+        >
+          <motion.a
             href={SOCIAL_LINKS.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
+            className="inline-flex items-center justify-center h-11 w-11 -m-1 rounded-lg text-muted-foreground hero-social-icon"
             aria-label="GitHub"
+            whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Github className="h-5 w-5" />
-          </a>
-          <a
+            <Github className="h-5 w-5" aria-hidden="true" />
+          </motion.a>
+          <motion.a
             href={SOCIAL_LINKS.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
+            className="inline-flex items-center justify-center h-11 w-11 -m-1 rounded-lg text-muted-foreground hero-social-icon"
             aria-label="LinkedIn"
+            whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Linkedin className="h-5 w-5" />
-          </a>
+            <Linkedin className="h-5 w-5" aria-hidden="true" />
+          </motion.a>
+          <CopyEmail
+            email={SITE_EMAIL}
+            className="inline-flex items-center justify-center h-11 w-11 -m-1 rounded-lg text-muted-foreground hero-social-icon"
+            aria-label="Copy email address"
+            whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Mail className="h-5 w-5" aria-hidden="true" />
+          </CopyEmail>
         </motion.div>
+
+
       </div>
     </section>
   );

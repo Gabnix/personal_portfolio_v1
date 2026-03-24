@@ -4,15 +4,26 @@ import { fadeInUp } from "@/lib/animations";
 interface SectionHeaderProps {
   label: string;
   subtitle?: string;
+  overline?: string;
   centered?: boolean;
 }
 
-export function SectionHeader({ label, subtitle, centered = false }: SectionHeaderProps) {
+export function SectionHeader({ label, subtitle, overline, centered = false }: SectionHeaderProps) {
   return (
     <AnimatedWrapper variant={fadeInUp} className={centered ? "text-center" : ""}>
-      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{label}</h2>
+      {overline && (
+        <p className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-3">
+          {overline}
+        </p>
+      )}
+      <h2
+        className="font-display font-medium leading-tight text-foreground"
+        style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", letterSpacing: "-0.03em" }}
+      >
+        {label}
+      </h2>
       {subtitle && (
-        <p className="mt-3 text-muted-foreground text-lg max-w-2xl">
+        <p className="mt-3 text-muted-foreground text-lg max-w-2xl leading-relaxed">
           {subtitle}
         </p>
       )}

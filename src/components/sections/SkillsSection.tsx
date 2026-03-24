@@ -1,46 +1,44 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { SectionHeader } from "@/components/shared/SectionHeader";
 import { AnimatedWrapper } from "@/components/shared/AnimatedWrapper";
-import { SkillBadge } from "@/components/shared/SkillBadge";
-import { staggerContainer, fadeInUp } from "@/lib/animations";
-import { skillsByCategory } from "@/data/skills";
+import { fadeInUp } from "@/lib/animations";
 
-const CATEGORY_LABELS: Record<string, string> = {
-  language: "Languages",
-  framework: "Frameworks & Libraries",
-  database: "Databases",
-  tool: "Tools",
-};
+const TOOLS = [
+  { category: "Languages", tools: ["Python", "JavaScript", "Dart", "Java", "C"] },
+  { category: "Frontend", tools: ["Flutter", "React", "Figma"] },
+  { category: "Backend", tools: ["Node.js", "Express", "Django", "Flask"] },
+  { category: "Data", tools: ["Supabase", "MongoDB", "MySQL"] },
+  { category: "Infrastructure", tools: ["Docker", "Git", "Jira", "VS Code"] },
+];
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-24 bg-muted/30">
+    <section id="skills" className="py-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <SectionHeader
-          label="Skills"
-          subtitle="Technologies I work with."
-        />
 
-        <div className="mt-12 space-y-10">
-          {Object.entries(skillsByCategory).map(([category, skills]) => (
-            <div key={category}>
-              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
-                {CATEGORY_LABELS[category] ?? category}
-              </h3>
-              <AnimatedWrapper variant={staggerContainer}>
-                <motion.div className="flex flex-wrap gap-2">
-                  {skills.map((skill) => (
-                    <motion.div key={skill.name} variants={fadeInUp}>
-                      <SkillBadge skill={skill} />
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </AnimatedWrapper>
-            </div>
+        <AnimatedWrapper variant={fadeInUp}>
+          <p className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-6">
+            Stack
+          </p>
+        </AnimatedWrapper>
+
+        <dl className="space-y-5">
+          {TOOLS.map(({ category, tools }, i) => (
+            <AnimatedWrapper key={category} variant={fadeInUp} delay={i * 0.08}>
+              <div className="flex items-center gap-6">
+                <dt className="w-36 sm:w-40 flex-shrink-0">
+                  <span className="font-sans font-medium text-[11px] text-foreground/50 uppercase tracking-[0.18em]">
+                    {category}
+                  </span>
+                </dt>
+                <dd className="text-sm text-foreground/60 leading-none">
+                  {tools.join(" · ")}
+                </dd>
+              </div>
+            </AnimatedWrapper>
           ))}
-        </div>
+        </dl>
+
       </div>
     </section>
   );

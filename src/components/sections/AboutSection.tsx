@@ -1,49 +1,91 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { SectionHeader } from "@/components/shared/SectionHeader";
 import { AnimatedWrapper } from "@/components/shared/AnimatedWrapper";
-import { slideInFromLeft, slideInFromRight } from "@/lib/animations";
+import { fadeInUp } from "@/lib/animations";
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24">
+    <section id="about" className="pt-24 pb-32">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <SectionHeader
-          label="About Me"
-          subtitle="A bit about who I am and what I do."
-        />
+        <div className="grid md:grid-cols-[1fr_200px] gap-16 items-start">
 
-        <div className="mt-12 grid md:grid-cols-2 gap-12 items-center">
-          <AnimatedWrapper variant={slideInFromLeft}>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+          {/* ── Editorial text ─────────────────────────────────────────── */}
+          <AnimatedWrapper variant={fadeInUp}>
+            <p className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-6">
+              Background
+            </p>
+            <div
+              className="space-y-5 text-foreground/65 leading-relaxed"
+              style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
+            >
               <p>
-                I&apos;m a software engineer who enjoys building things for the
-                web. I care about writing clean, maintainable code and creating
-                interfaces that feel intuitive.
+                I&apos;m a software engineer focused on building high-performance
+                web systems — from distributed backends to precise, well-crafted
+                UIs. I care about the details: clean architecture, measurable
+                performance, and interfaces that feel inevitable.
               </p>
               <p>
-                When I&apos;m not coding, you can find me exploring new
-                technologies, contributing to open source, or enjoying a good
-                book.
+                I bring an engineering-first mindset to every problem, but
+                I&apos;m equally comfortable talking design decisions, product
+                tradeoffs, and what ships versus what doesn&apos;t.
               </p>
-              <div className="pt-4">
-                <Link href="/about" className={cn(buttonVariants({ variant: "outline" }))}>
-                  More about me <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+              <p>
+                Outside of work, I&apos;m interested in open source, design
+                systems, and the intersection of engineering and craft.
+              </p>
+            </div>
+          </AnimatedWrapper>
+
+          {/* ── Meta facts ─────────────────────────────────────────────── */}
+          <AnimatedWrapper variant={fadeInUp} delay={0.15}>
+            <dl className="space-y-6">
+              <div>
+                <dt className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-1.5">
+                  Focus
+                </dt>
+                <dd className="text-sm text-foreground/75">
+                  High-performance web systems
+                </dd>
               </div>
-            </div>
+              <div>
+                <dt className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-1.5">
+                  Location
+                </dt>
+                <dd className="text-sm text-foreground/75">Perth, Western Australia</dd>
+              </div>
+              <div>
+                <dt className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-1.5">
+                  Education
+                </dt>
+                <dd className="text-sm text-foreground/75 leading-relaxed">
+                  Bachelor of Computing (Computer Science)
+                  <br />
+                  Curtin University, 2022-2025
+                </dd>
+              </div>
+              <div>
+                <dt className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-1.5">
+                  Interests
+                </dt>
+                <dd className="text-sm text-foreground/75">
+                  Open source · design systems · music · reading
+                </dd>
+              </div>
+              {/* <div>
+                <dt className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-1.5">
+                  Status
+                </dt>
+                <dd className="flex items-center gap-2">
+                  <span
+                    className="h-1.5 w-1.5 rounded-full bg-indigo-accent flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm text-foreground/75">Open to opportunities</span>
+                </dd>
+              </div> */}
+            </dl>
           </AnimatedWrapper>
 
-          <AnimatedWrapper variant={slideInFromRight}>
-            <div className="aspect-square rounded-2xl bg-muted flex items-center justify-center">
-              {/* Replace with <Image> once you have a profile photo */}
-              <span className="text-muted-foreground text-sm">Photo</span>
-            </div>
-          </AnimatedWrapper>
         </div>
       </div>
     </section>

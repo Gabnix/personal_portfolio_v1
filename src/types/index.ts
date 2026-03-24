@@ -17,6 +17,7 @@ export interface Skill {
 }
 
 export interface Experience {
+  slug: string;
   company: string;
   role: string;
   period: string;

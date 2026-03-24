@@ -1,30 +1,43 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Mail } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { SectionHeader } from "@/components/shared/SectionHeader";
+import { ArrowRight } from "lucide-react";
 import { AnimatedWrapper } from "@/components/shared/AnimatedWrapper";
-import { SOCIAL_LINKS } from "@/lib/constants";
+import { CopyEmail } from "@/components/shared/CopyEmail";
+import { fadeInUp } from "@/lib/animations";
+import { SITE_EMAIL } from "@/lib/constants";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="pt-40 pb-48">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <AnimatedWrapper className="max-w-2xl">
-          <SectionHeader
-            label="Get In Touch"
-            subtitle="I'm currently open to new opportunities. Whether you have a question or just want to say hi, my inbox is always open."
-          />
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/contact" className={cn(buttonVariants({ size: "lg" }))}>
-              <Mail className="mr-2 h-4 w-4" />
-              Send a message
+        <AnimatedWrapper variant={fadeInUp}>
+          <p className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mb-6">
+            Let&apos;s talk
+          </p>
+          <h2
+            className="font-display font-light text-foreground leading-[0.92]"
+            style={{ fontSize: "clamp(2.5rem, 7vw, 5.5rem)", letterSpacing: "-0.035em" }}
+          >
+            Ready to build
+            <br />
+            <span className="text-foreground/40">something great?</span>
+          </h2>
+
+          <div className="mt-12 flex flex-wrap items-center gap-6">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 text-sm font-medium text-foreground/90 hover:text-foreground transition-colors"
+            >
+              Send a message <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
             </Link>
-            <a href={SOCIAL_LINKS.email} className={cn(buttonVariants({ variant: "outline", size: "lg" }))}>
-              Email directly <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
+            <CopyEmail
+              email={SITE_EMAIL}
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Copy email address"
+            >
+              or email directly <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </CopyEmail>
           </div>
         </AnimatedWrapper>
       </div>

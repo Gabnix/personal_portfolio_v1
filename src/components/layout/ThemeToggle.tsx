@@ -14,7 +14,7 @@ export function ThemeToggle() {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return <Button variant="ghost" size="icon" className="w-9 h-9" aria-label="Toggle theme" />;
+    return <Button variant="ghost" size="icon" className="w-11 h-11" aria-label="Toggle theme" />;
   }
 
   const isDark = theme === "dark";
@@ -23,7 +23,7 @@ export function ThemeToggle() {
     <Button
       variant="ghost"
       size="icon"
-      className="w-9 h-9"
+      className="w-11 h-11"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label="Toggle theme"
     >
@@ -35,7 +35,7 @@ export function ThemeToggle() {
           exit={{ opacity: 0, rotate: 45, scale: 0.8 }}
           transition={{ duration: 0.2 }}
         >
-          {isDark ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+          {isDark ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
         </motion.span>
       </AnimatePresence>
     </Button>
