@@ -36,7 +36,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
           All experience
         </Link>
 
-        <p className="font-medium text-[12px] uppercase tracking-[0.18em] text-foreground/60 mt-8 mb-3">
+        <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mt-8 mb-3">
           Work History
         </p>
         <h1
@@ -46,15 +46,15 @@ export default async function ExperienceDetailPage({ params }: Props) {
           {entry.role}
         </h1>
 
-        <p className="mt-3 text-sm text-foreground/50">
+        <p className="mt-3 text-sm text-muted-foreground">
           <span className="font-medium">{entry.company}</span>
-          <span className="mx-2 text-foreground/20">·</span>
+          <span className="mx-2 opacity-40">·</span>
           <span className="tabular-nums">{entry.period}</span>
         </p>
 
         <div className="mt-10 border-t border-border pt-8">
           {entry.description.length === 1 ? (
-            <p className="text-foreground/70 leading-relaxed" style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}>
+            <p className="text-muted-foreground leading-relaxed" style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}>
               {entry.description[0]}
             </p>
           ) : (
@@ -62,7 +62,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
               {entry.description.map((line, i) => (
                 <li
                   key={i}
-                  className="text-foreground/70 leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.65em] before:h-px before:w-2 before:bg-foreground/30"
+                  className="text-muted-foreground leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.65em] before:h-px before:w-2 before:bg-muted-foreground/40"
                   style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
                 >
                   {line}

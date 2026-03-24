@@ -70,7 +70,7 @@ export function ExperienceSection() {
           href="/experience"
           className="inline-flex items-center gap-1.5 mt-8 text-xs text-muted-foreground hover:text-foreground transition-colors"
         >
-          {/* Full history <ArrowRight className="h-3 w-3" aria-hidden="true" /> */}
+          Full history <ArrowRight className="h-3 w-3" aria-hidden="true" />
         </Link>
 
       </div>

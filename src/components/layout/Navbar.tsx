@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,6 +21,14 @@ export function Navbar() {
   const pathname = usePathname();
   const { scrolled } = useScrollProgress();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <motion.header
@@ -35,13 +43,21 @@ export function Navbar() {
       )}
     >
       <nav className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Logo — matches page content alignment */}
+        {/* Logo — home anchor with smooth-scroll on / */}
         <Link
           href="/"
-          className="inline-flex items-center min-h-[44px] font-light text-foreground/80 hover:text-foreground transition-colors"
-          style={{ letterSpacing: "-0.02em" }}
+          onClick={handleLogoClick}
+          className="inline-flex items-center min-h-[44px]"
+          aria-label="Back to top"
         >
-          {SITE_NAME}
+          <motion.span
+            className="font-light text-foreground"
+            style={{ letterSpacing: "-0.02em" }}
+            whileHover={shouldReduceMotion ? {} : { opacity: 0.7 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {SITE_NAME}
+          </motion.span>
         </Link>
 
         {/* Desktop nav — mono text links, no pills */}

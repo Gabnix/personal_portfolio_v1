@@ -133,6 +133,7 @@
     @apply font-sans;
     font-size: 18px;
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
   }
   /* Indigo focus ring — keyboard navigation, satisfies WCAG 2.4.7 */
   *:focus-visible {
