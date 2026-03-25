@@ -5,7 +5,7 @@ import {
   GoogleReCaptchaProvider,
   useGoogleReCaptcha,
 } from "react-google-recaptcha-v3";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { AnimatedWrapper } from "@/components/shared/AnimatedWrapper";
 import { BackToHome } from "@/components/shared/BackToHome";
 import { fadeInUp } from "@/lib/animations";
@@ -16,7 +16,7 @@ type FormState = "idle" | "loading" | "success" | "error";
 const FIELD_BASE =
   "w-full bg-transparent border-b border-foreground/10 py-3 min-h-[44px] " +
   "text-foreground placeholder:text-muted-foreground/40 placeholder:text-sm " +
-  "focus:outline-none focus:border-indigo-accent/60 transition-colors duration-200 font-sans text-sm";
+  "focus:outline-none focus:border-accent-signal/50 transition-colors duration-300 font-sans text-sm";
 
 function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -89,21 +89,24 @@ function ContactForm() {
       <div className="mx-auto max-w-2xl px-6 sm:px-10 pt-12 sm:pt-16 pb-24">
         <AnimatedWrapper variant={fadeInUp}>
           <BackToHome />
-          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mt-12 mb-4">
-            Message Sent
-          </p>
-          <h1
-            className="font-display font-semibold text-foreground leading-tight"
-            style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", letterSpacing: "-0.025em" }}
-          >
-            I&apos;ll be in touch.
-          </h1>
-          <p
-            className="mt-5 text-muted-foreground leading-relaxed max-w-sm"
-            style={{ fontSize: "clamp(0.9375rem, 2vw, 1rem)" }}
-          >
-            Thanks for reaching out. I typically respond within 24–48 hours.
-          </p>
+          <div className="mt-12">
+            <CheckCircle2 className="h-7 w-7 text-accent-signal mb-5" aria-hidden="true" />
+            <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-signal mb-4">
+              Message Sent
+            </p>
+            <h1
+              className="font-display font-semibold text-foreground leading-tight"
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", letterSpacing: "-0.025em" }}
+            >
+              I&apos;ll be in touch.
+            </h1>
+            <p
+              className="mt-5 text-muted-foreground leading-relaxed max-w-sm"
+              style={{ fontSize: "clamp(0.9375rem, 2vw, 1rem)" }}
+            >
+              Thanks for reaching out. I typically respond within 24–48 hours.
+            </p>
+          </div>
         </AnimatedWrapper>
       </div>
     );
@@ -214,12 +217,12 @@ function ContactForm() {
             <p className="text-sm text-destructive leading-relaxed">{errorMsg}</p>
           )}
 
-          {/* Submit */}
+          {/* Submit + reCAPTCHA attribution */}
           <AnimatedWrapper variant={fadeInUp} delay={0.26}>
             <button
               type="submit"
               disabled={formState === "loading"}
-              className="inline-flex items-center gap-1.5 min-h-[44px] text-sm font-medium text-foreground/85 hover:text-indigo-accent transition-colors duration-200 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed group"
+              className="inline-flex items-center gap-1.5 min-h-[44px] text-sm font-medium text-foreground/85 hover:text-accent-signal transition-colors duration-300 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed group"
             >
               {formState === "loading" ? (
                 "Sending…"
@@ -233,6 +236,26 @@ function ContactForm() {
                 </>
               )}
             </button>
+            <p className="mt-5 text-[11px] text-muted-foreground/50 leading-relaxed">
+              Protected by reCAPTCHA —{" "}
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-muted-foreground transition-colors duration-200"
+              >
+                Privacy Policy
+              </a>
+              {" · "}
+              <a
+                href="https://policies.google.com/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-muted-foreground transition-colors duration-200"
+              >
+                Terms
+              </a>
+            </p>
           </AnimatedWrapper>
 
         </form>

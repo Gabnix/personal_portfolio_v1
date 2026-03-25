@@ -43,7 +43,7 @@ export default function ExperiencePage() {
               href={`/experience/${entry.slug}`}
               className={cn(
                 "ghost-card group block -mx-4 px-4 py-4",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-accent focus-visible:rounded-lg"
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-signal focus-visible:rounded-lg"
               )}
             >
               <div className="grid sm:grid-cols-[130px_1fr] gap-x-8 gap-y-1">
@@ -57,7 +57,7 @@ export default function ExperiencePage() {
                 <div>
                   <div className="flex items-start gap-1.5">
                     <h2
-                      className="font-display font-medium text-foreground/85 leading-snug group-hover:text-indigo-accent transition-colors duration-200"
+                      className="font-display font-medium text-foreground/85 leading-snug group-hover:text-accent-signal transition-colors duration-300"
                       style={{ fontSize: "clamp(0.9375rem, 2vw, 1rem)" }}
                     >
                       {entry.role}

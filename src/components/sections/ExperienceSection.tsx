@@ -12,13 +12,13 @@ export function ExperienceSection() {
     <section id="experience" className="scroll-mt-0">
 
       {/* ── Sticky section header — mobile only ──────────────────── */}
-      <div className="lg:hidden sticky top-0 z-20 -mx-6 sm:-mx-10 px-6 sm:px-10 py-3 mb-8 backdrop-blur-md bg-background/70 border-b border-foreground/[0.07]">
+      <div className="lg:hidden sticky top-0 z-20 -mx-6 sm:-mx-10 px-6 sm:px-10 py-3 mb-3 backdrop-blur-md bg-background/70">
         <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
           Experience
         </span>
       </div>
 
-      <div className="py-12 lg:py-24">
+      <div className="pb-12 lg:py-24">
 
         {/* Desktop overline */}
         <AnimatedWrapper variant={fadeInUp} className="hidden lg:block">
@@ -34,7 +34,7 @@ export function ExperienceSection() {
                 href={`/experience/${entry.slug}`}
                 className={cn(
                   "ghost-card group block -mx-4 px-4 py-4",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-accent focus-visible:rounded-lg"
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-signal focus-visible:rounded-lg"
                 )}
               >
                 <div className="grid sm:grid-cols-[120px_1fr] gap-x-8 gap-y-1">
@@ -48,7 +48,7 @@ export function ExperienceSection() {
                   <div className="min-w-0">
                     <div className="flex items-start gap-1.5">
                       <h3
-                        className="font-display font-medium text-foreground/85 leading-snug group-hover:text-indigo-accent transition-colors duration-200"
+                        className="font-display font-medium text-foreground/85 leading-snug group-hover:text-accent-signal transition-colors duration-300"
                         style={{ fontSize: "clamp(0.9375rem, 2vw, 1rem)" }}
                       >
                         {entry.role}

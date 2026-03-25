@@ -105,7 +105,7 @@ export function LeftColumn() {
                   className={cn(
                     "block h-px flex-shrink-0 transition-all duration-300 ease-out",
                     isActive
-                      ? "w-16 bg-foreground"
+                      ? "w-16 bg-accent-signal"
                       : "w-8 bg-muted-foreground/40 group-hover:w-12 group-hover:bg-muted-foreground/70"
                   )}
                 />
@@ -113,7 +113,7 @@ export function LeftColumn() {
                   className={cn(
                     "font-sans text-[11px] font-medium uppercase tracking-[0.18em] transition-colors duration-200",
                     isActive
-                      ? "text-foreground"
+                      ? "text-accent-signal"
                       : "text-muted-foreground group-hover:text-foreground/65"
                   )}
                 >
@@ -131,7 +131,7 @@ export function LeftColumn() {
           href={SOCIAL_LINKS.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center h-10 w-10 rounded-lg text-muted-foreground hover:text-foreground transition-colors duration-200"
+          className="inline-flex items-center justify-center h-10 w-10 rounded-lg text-muted-foreground hero-social-icon"
           aria-label="GitHub"
         >
           <Github className="h-[18px] w-[18px]" aria-hidden="true" />
@@ -140,14 +140,14 @@ export function LeftColumn() {
           href={SOCIAL_LINKS.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center h-10 w-10 rounded-lg text-muted-foreground hover:text-foreground transition-colors duration-200"
+          className="inline-flex items-center justify-center h-10 w-10 rounded-lg text-muted-foreground hero-social-icon"
           aria-label="LinkedIn"
         >
           <Linkedin className="h-[18px] w-[18px]" aria-hidden="true" />
         </a>
         <CopyEmail
           email={SITE_EMAIL}
-          className="inline-flex items-center justify-center h-10 w-10 rounded-lg text-muted-foreground hover:text-foreground transition-colors duration-200 cursor-pointer"
+          className="inline-flex items-center justify-center h-10 w-10 rounded-lg text-muted-foreground hero-social-icon cursor-pointer"
           aria-label="Copy email address"
         >
           <Mail className="h-[18px] w-[18px]" aria-hidden="true" />

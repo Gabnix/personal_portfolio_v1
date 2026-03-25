@@ -31,7 +31,7 @@ export function ContactSection() {
           <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground/85 hover:text-indigo-accent transition-colors duration-200 group"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground/85 hover:text-accent-signal transition-colors duration-300 group"
             >
               Send a message
               <ArrowUpRight
@@ -39,8 +39,6 @@ export function ContactSection() {
                 aria-hidden="true"
               />
             </Link>
-
-            <span className="hidden sm:block h-px w-4 bg-foreground/20" aria-hidden="true" />
 
             <CopyEmail
               email={SITE_EMAIL}
