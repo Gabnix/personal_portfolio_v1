@@ -76,8 +76,7 @@ export default function NotFound() {
                   className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5"
                   aria-hidden="true"
                 />
-                {"Help him rebuild "}
-                <span className="text-accent-signal group-hover:text-inherit transition-colors duration-300">home</span>
+                <span>{"Help him rebuild "}<span className="text-accent-signal group-hover:text-inherit transition-colors duration-300">home</span></span>
               </Link>
             </motion.div>
 
