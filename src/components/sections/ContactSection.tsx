@@ -15,7 +15,7 @@ export function ContactSection() {
 
         <AnimatedWrapper variant={fadeInUp}>
           {/* Overline — static on all breakpoints for Contact (last section, no sticky needed) */}
-          <p className="lg:hidden font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-8">
+          <p className="lg:hidden font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-8">
             Contact
           </p>
 
@@ -31,11 +31,11 @@ export function ContactSection() {
           <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 font-sans text-base font-semibold text-foreground/85 hover:text-accent-signal transition-colors duration-300 group"
+              className="inline-flex items-center gap-2 px-5 py-2.5 border border-foreground/20 rounded font-sans text-sm font-semibold text-foreground/85 hover:border-accent-signal hover:text-accent-signal transition-colors duration-300 group"
             >
               Send a message
               <ArrowUpRight
-                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 aria-hidden="true"
               />
             </Link>

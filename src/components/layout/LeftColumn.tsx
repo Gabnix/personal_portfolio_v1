@@ -13,7 +13,6 @@ const NAV_ITEMS = [
   { label: "About", sectionId: "about" },
   { label: "Experience", sectionId: "experience" },
   { label: "Projects", sectionId: "projects" },
-  { label: "Stack", sectionId: "skills" },
   { label: "Contact", sectionId: "contact" },
 ] as const;
 

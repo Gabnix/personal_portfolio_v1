@@ -9,7 +9,7 @@ export function AboutSection() {
 
       {/* ── Sticky section header — mobile only ──────────────────── */}
       <div className="lg:hidden sticky top-0 z-20 -mx-6 sm:-mx-10 px-6 sm:px-10 py-3 mb-3 backdrop-blur-md bg-background/70">
-        <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+        <span className="font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
           About
         </span>
       </div>

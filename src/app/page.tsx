@@ -1,6 +1,5 @@
 import { LeftColumn } from "@/components/layout/LeftColumn";
 import { AboutSection } from "@/components/sections/AboutSection";
-import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -22,7 +21,6 @@ export default function HomePage() {
             <AboutSection />
             <ExperienceSection />
             <ProjectsSection />
-            <SkillsSection />
             <ContactSection />
           </div>
 
