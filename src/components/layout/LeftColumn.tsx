@@ -93,11 +93,11 @@ export function LeftColumn() {
           </Link>
           <p
             className="mt-2 font-display font-medium text-foreground/60 dark:text-foreground/80"
-            style={{ fontSize: "clamp(1rem, 1.8vw, 1.125rem)", letterSpacing: "-0.01em" }}
+            style={{ fontSize: "clamp(1.0625rem, 2vw, 1.25rem)", letterSpacing: "-0.01em" }}
           >
             Software Engineer
           </p>
-          <p className="mt-4 font-sans text-sm leading-relaxed text-muted-foreground max-w-sm">
+          <p className="mt-4 font-sans text-base leading-relaxed text-muted-foreground max-w-sm">
             I build fast, reliable web systems with clean architecture and thoughtfully crafted UIs.
           </p>
         </motion.div>
