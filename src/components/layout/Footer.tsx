@@ -3,6 +3,7 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { SITE_NAME, SOCIAL_LINKS, SITE_EMAIL } from "@/lib/constants";
 import { CopyEmail } from "@/components/shared/CopyEmail";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Footer() {
   return (
@@ -38,6 +39,7 @@ export function Footer() {
           >
             <Mail className="h-5 w-5" aria-hidden="true" />
           </CopyEmail>
+          <ThemeToggle />
         </div>
       </div>
     </footer>
