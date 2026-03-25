@@ -11,11 +11,11 @@ export function ContactSection() {
   return (
     <section id="contact" className="scroll-mt-0">
 
-      <div className="py-12 lg:py-24">
+      <div className="py-10 lg:py-16">
 
         <AnimatedWrapper variant={fadeInUp}>
           {/* Overline — static on all breakpoints for Contact (last section, no sticky needed) */}
-          <p className="lg:hidden font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-8">
+          <p className="lg:hidden font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-foreground mb-8">
             Contact
           </p>
 

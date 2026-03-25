@@ -12,13 +12,13 @@ export function ExperienceSection() {
     <section id="experience" className="scroll-mt-0">
 
       {/* ── Sticky section header — mobile only ──────────────────── */}
-      <div className="lg:hidden sticky top-0 z-20 -mx-6 sm:-mx-10 px-6 sm:px-10 py-3 mb-3 backdrop-blur-md bg-background/70">
-        <span className="font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+      <div className="lg:hidden sticky top-0 z-20 -mx-6 sm:-mx-10 px-6 sm:px-10 py-3 mb-3 backdrop-blur-md bg-background/85">
+        <span className="font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-foreground">
           Experience
         </span>
       </div>
 
-      <div className="pb-12 lg:py-24">
+      <div className="pb-10 lg:py-16">
 
         {/* Desktop overline */}
         <AnimatedWrapper variant={fadeInUp} className="hidden">

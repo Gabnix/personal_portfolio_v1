@@ -78,7 +78,7 @@ export function LeftColumn() {
   });
 
   return (
-    <div className="flex flex-col gap-10 lg:h-full lg:justify-between lg:py-24">
+    <div className="flex flex-col gap-10 lg:h-full lg:justify-between lg:py-16">
 
       {/* ── Identity ─────────────────────────────────────────────── */}
       <div>

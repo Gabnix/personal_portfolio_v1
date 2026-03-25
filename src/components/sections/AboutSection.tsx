@@ -8,13 +8,13 @@ export function AboutSection() {
     <section id="about" className="scroll-mt-0">
 
       {/* ── Sticky section header — mobile only ──────────────────── */}
-      <div className="lg:hidden sticky top-0 z-20 -mx-6 sm:-mx-10 px-6 sm:px-10 py-3 mb-3 backdrop-blur-md bg-background/70">
-        <span className="font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+      <div className="lg:hidden sticky top-0 z-20 -mx-6 sm:-mx-10 px-6 sm:px-10 py-3 mb-3 backdrop-blur-md bg-background/85">
+        <span className="font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-foreground">
           About
         </span>
       </div>
 
-      <div className="pb-12 lg:pt-0 lg:pb-24">
+      <div className="pb-10 lg:pt-0 lg:pb-16">
         <AnimatedWrapper variant={fadeInUp}>
           <div
             className="font-sans space-y-5 text-base leading-relaxed text-muted-foreground max-w-xl"

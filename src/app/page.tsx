@@ -17,7 +17,7 @@ export default function HomePage() {
           </aside>
 
           {/* ── Right Column — scrollable content stream ─────────────────────── */}
-          <div className="pb-20 lg:flex-1 lg:pt-24 lg:pb-[50vh] lg:min-w-0">
+          <div className="pb-20 lg:flex-1 lg:pt-16 lg:pb-[50vh] lg:min-w-0">
             <AboutSection />
             <ExperienceSection />
             <ProjectsSection />
