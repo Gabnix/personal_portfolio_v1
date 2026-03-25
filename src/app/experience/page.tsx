@@ -51,7 +51,7 @@ export default function ExperiencePage() {
               <div className="grid sm:grid-cols-[130px_1fr] gap-x-8 gap-y-1">
 
                 {/* Date */}
-                <p className="text-sm text-muted-foreground tabular-nums leading-relaxed sm:pt-[3px]">
+                <p className="font-sans text-sm text-muted-foreground tabular-nums leading-relaxed sm:pt-[3px]">
                   {entry.period}
                 </p>
 
@@ -69,12 +69,12 @@ export default function ExperiencePage() {
                       aria-hidden="true"
                     />
                   </div>
-                  <p className="text-sm font-medium text-muted-foreground mt-0.5">
+                  <p className="font-sans text-sm font-medium text-muted-foreground mt-0.5">
                     {entry.company}
                   </p>
 
                   {entry.description.length === 1 ? (
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    <p className="mt-2 font-sans text-sm text-muted-foreground leading-relaxed">
                       {entry.description[0]}
                     </p>
                   ) : (
@@ -82,7 +82,7 @@ export default function ExperiencePage() {
                       {entry.description.map((line, j) => (
                         <li
                           key={j}
-                          className="text-sm text-muted-foreground leading-relaxed pl-3 relative before:absolute before:left-0 before:top-[0.6em] before:h-px before:w-1.5 before:bg-muted-foreground/40"
+                          className="font-sans text-sm text-muted-foreground leading-relaxed pl-3 relative before:absolute before:left-0 before:top-[0.6em] before:h-px before:w-1.5 before:bg-muted-foreground/40"
                         >
                           {line}
                         </li>

@@ -68,7 +68,7 @@ export function LeftColumn() {
     if (suppressTimerRef.current) clearTimeout(suppressTimerRef.current);
     suppressTimerRef.current = setTimeout(() => {
       suppressRef.current = false;
-    }, 1200);
+    }, 800);
   }, []);
 
   const entry = (delay: number) => ({
@@ -86,18 +86,18 @@ export function LeftColumn() {
           <Link href="/" aria-label="Home">
             <h1
               className="font-display font-semibold text-foreground leading-none hover:text-foreground/75 transition-colors duration-200"
-              style={{ fontSize: "clamp(1.725rem, 3.45vw, 2.15rem)", letterSpacing: "-0.025em" }}
+              style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.25rem)", letterSpacing: "-0.025em" }}
             >
               Jim Ling
             </h1>
           </Link>
           <p
             className="mt-2 font-display font-medium text-foreground/60 dark:text-foreground/80"
-            style={{ fontSize: "clamp(1rem, 1.725vw, 1.15rem)", letterSpacing: "-0.01em" }}
+            style={{ fontSize: "clamp(1rem, 1.8vw, 1.125rem)", letterSpacing: "-0.01em" }}
           >
             Software Engineer
           </p>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground max-w-sm">
+          <p className="mt-4 font-sans text-sm leading-relaxed text-muted-foreground max-w-sm">
             I build fast, reliable web systems with clean architecture and thoughtfully crafted UIs.
           </p>
         </motion.div>
@@ -120,15 +120,15 @@ export function LeftColumn() {
               >
                 <span
                   className={cn(
-                    "block h-px flex-shrink-0 transition-all duration-300 ease-out",
+                    "block flex-shrink-0 transition-[width,background-color] duration-300 ease-out",
                     isActive
-                      ? "w-16 bg-accent-signal"
-                      : "w-8 bg-muted-foreground/40 group-hover:w-12 group-hover:bg-muted-foreground/70"
+                      ? "w-16 h-[2px] bg-accent-signal"
+                      : "w-8 h-px bg-muted-foreground/40 group-hover:w-12 group-hover:bg-muted-foreground/70"
                   )}
                 />
                 <span
                   className={cn(
-                    "font-sans text-[14px] font-medium uppercase tracking-[0.18em] transition-colors duration-200",
+                    "font-sans text-[12px] font-semibold uppercase tracking-[0.22em] transition-colors duration-200",
                     isActive
                       ? "text-accent-signal"
                       : "text-muted-foreground group-hover:text-foreground/65"
@@ -148,7 +148,7 @@ export function LeftColumn() {
           href={SOCIAL_LINKS.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center h-10 w-10 rounded-lg text-muted-foreground hero-social-icon"
+          className="inline-flex items-center justify-center h-11 w-11 rounded-lg text-muted-foreground hero-social-icon"
           aria-label="GitHub"
         >
           <Github className="h-[21px] w-[21px]" aria-hidden="true" />
@@ -157,14 +157,14 @@ export function LeftColumn() {
           href={SOCIAL_LINKS.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center h-10 w-10 rounded-lg text-muted-foreground hero-social-icon"
+          className="inline-flex items-center justify-center h-11 w-11 rounded-lg text-muted-foreground hero-social-icon"
           aria-label="LinkedIn"
         >
           <Linkedin className="h-[21px] w-[21px]" aria-hidden="true" />
         </a>
         <CopyEmail
           email={SITE_EMAIL}
-          className="inline-flex items-center justify-center h-10 w-10 rounded-lg text-muted-foreground hero-social-icon cursor-pointer"
+          className="inline-flex items-center justify-center h-11 w-11 rounded-lg text-muted-foreground hero-social-icon cursor-pointer"
           aria-label="Copy email address"
         >
           <Mail className="h-[21px] w-[21px]" aria-hidden="true" />

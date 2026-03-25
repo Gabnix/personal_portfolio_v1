@@ -15,13 +15,13 @@ export function ContactSection() {
 
         <AnimatedWrapper variant={fadeInUp}>
           {/* Overline — static on all breakpoints for Contact (last section, no sticky needed) */}
-          <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-8">
+          <p className="lg:hidden font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-8">
             Contact
           </p>
 
           <h2
             className="font-display font-medium text-foreground leading-snug"
-            style={{ fontSize: "clamp(1.375rem, 3.5vw, 1.75rem)", letterSpacing: "-0.02em" }}
+            style={{ fontSize: "clamp(1.25rem, 3vw, 1.5rem)", letterSpacing: "-0.02em" }}
           >
             Job opportunities or collaborations?
             <br />
@@ -31,18 +31,18 @@ export function ContactSection() {
           <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground/85 hover:text-accent-signal transition-colors duration-300 group"
+              className="inline-flex items-center gap-2 font-sans text-base font-semibold text-foreground/85 hover:text-accent-signal transition-colors duration-300 group"
             >
               Send a message
               <ArrowUpRight
-                className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 aria-hidden="true"
               />
             </Link>
 
             <CopyEmail
               email={SITE_EMAIL}
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 cursor-pointer"
+              className="inline-flex items-center gap-1.5 font-sans text-base font-medium text-muted-foreground hover:text-foreground hover:underline underline-offset-2 transition-colors duration-200 cursor-pointer"
               aria-label="Copy email address"
             >
               or copy my email

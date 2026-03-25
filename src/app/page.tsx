@@ -3,6 +3,7 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { Footer } from "@/components/layout/Footer";
 
 export default function HomePage() {
   return (
@@ -24,6 +25,11 @@ export default function HomePage() {
           </div>
 
         </div>
+      </div>
+
+      {/* Footer — mobile only; desktop uses the left column social icons */}
+      <div className="lg:hidden">
+        <Footer />
       </div>
     </div>
   );

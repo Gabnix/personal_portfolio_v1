@@ -21,7 +21,7 @@ export function ExperienceSection() {
       <div className="pb-12 lg:py-24">
 
         {/* Desktop overline */}
-        <AnimatedWrapper variant={fadeInUp} className="hidden lg:block">
+        <AnimatedWrapper variant={fadeInUp} className="hidden">
           <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-8">
             Experience
           </p>
@@ -40,7 +40,7 @@ export function ExperienceSection() {
                 <div className="grid sm:grid-cols-[120px_1fr] gap-x-8 gap-y-1">
 
                   {/* Date */}
-                  <p className="text-sm text-muted-foreground tabular-nums leading-relaxed pt-0.5 sm:pt-[3px]">
+                  <p className="font-sans text-sm text-muted-foreground tabular-nums leading-relaxed pt-0.5 sm:pt-[3px]">
                     {entry.period}
                   </p>
 
@@ -58,12 +58,12 @@ export function ExperienceSection() {
                         aria-hidden="true"
                       />
                     </div>
-                    <p className="text-sm font-medium text-muted-foreground mt-0.5">
+                    <p className="font-sans text-sm font-medium text-muted-foreground mt-0.5">
                       {entry.company}
                     </p>
 
                     {entry.description.length === 1 ? (
-                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                      <p className="mt-2 font-sans text-sm text-muted-foreground leading-relaxed">
                         {entry.description[0]}
                       </p>
                     ) : (
@@ -71,7 +71,7 @@ export function ExperienceSection() {
                         {entry.description.map((line, j) => (
                           <li
                             key={j}
-                            className="text-sm text-muted-foreground leading-relaxed pl-3 relative before:absolute before:left-0 before:top-[0.6em] before:h-px before:w-1.5 before:bg-muted-foreground/40"
+                            className="font-sans text-sm text-muted-foreground leading-relaxed pl-3 relative before:absolute before:left-0 before:top-[0.6em] before:h-px before:w-1.5 before:bg-muted-foreground/40"
                           >
                             {line}
                           </li>
@@ -98,11 +98,11 @@ export function ExperienceSection() {
         <AnimatedWrapper variant={fadeInUp} delay={experience.length * 0.07}>
           <Link
             href="/experience"
-            className="inline-flex items-center gap-1.5 mt-6 ml-0 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 group"
+            className="inline-flex items-center gap-2 mt-8 font-sans text-base font-semibold text-foreground/75 hover:text-accent-signal transition-colors duration-200 group"
           >
-            Full résumé
+            View Full Résumé
             <ArrowUpRight
-              className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               aria-hidden="true"
             />
           </Link>

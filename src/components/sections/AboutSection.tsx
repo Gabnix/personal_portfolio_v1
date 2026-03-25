@@ -17,8 +17,7 @@ export function AboutSection() {
       <div className="pb-12 lg:pt-0 lg:pb-24">
         <AnimatedWrapper variant={fadeInUp}>
           <div
-            className="space-y-5 leading-relaxed text-muted-foreground max-w-xl"
-            style={{ fontSize: "clamp(0.9375rem, 2vw, 1.0625rem)" }}
+            className="font-sans space-y-5 text-base leading-relaxed text-muted-foreground max-w-xl"
           >
             <p>
               I&apos;m a software engineer focused on building high-performance

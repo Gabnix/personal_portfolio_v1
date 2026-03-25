@@ -87,35 +87,37 @@ function ContactForm() {
   /* ── Success state ──────────────────────────────────────────── */
   if (formState === "success") {
     return (
-      <div className="mx-auto max-w-2xl px-6 sm:px-10 pt-12 sm:pt-16 pb-24">
-        <AnimatedWrapper variant={fadeInUp}>
-          <BackToHome />
-          <div className="mt-12">
-            <CheckCircle2 className="h-7 w-7 text-accent-signal mb-5" aria-hidden="true" />
-            <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-accent-signal mb-4">
-              Message Sent
-            </p>
-            <h1
-              className="font-display font-semibold text-foreground leading-tight"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", letterSpacing: "-0.025em" }}
-            >
-              I&apos;ll be in touch.
-            </h1>
-            <p
-              className="mt-5 text-muted-foreground leading-relaxed max-w-sm"
-              style={{ fontSize: "clamp(0.9375rem, 2vw, 1rem)" }}
-            >
-              Thanks for reaching out. I typically respond within 24–48 hours.
-            </p>
-          </div>
-        </AnimatedWrapper>
-      </div>
+      <>
+        <div className="flex-1 mx-auto w-full max-w-3xl px-6 sm:px-10 pt-12 sm:pt-16 pb-24 min-h-[60vh]">
+          <AnimatedWrapper variant={fadeInUp}>
+            <BackToHome />
+            <div className="mt-12">
+              <CheckCircle2 className="h-7 w-7 text-accent-signal mb-5" aria-hidden="true" />
+              <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-accent-signal mb-4">
+                Message Sent
+              </p>
+              <h1
+                className="font-display font-semibold text-foreground leading-tight"
+                style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", letterSpacing: "-0.025em" }}
+              >
+                I&apos;ll be in touch.
+              </h1>
+              <p
+                className="mt-5 font-sans text-muted-foreground leading-relaxed max-w-sm"
+                style={{ fontSize: "clamp(0.9375rem, 2vw, 1rem)" }}
+              >
+                Thanks for reaching out. I'll get back to you within 24 hours.
+              </p>
+            </div>
+          </AnimatedWrapper>
+        </div>
+      </>
     );
   }
 
   /* ── Form ───────────────────────────────────────────────────── */
   return (
-    <div className="mx-auto max-w-3xl px-6 sm:px-10 pt-12 sm:pt-16 pb-24">
+    <div className="flex-1 mx-auto w-full max-w-3xl px-6 sm:px-10 pt-12 sm:pt-16 pb-24">
 
       {/* ── Back to home ──────────────────────────────────────────── */}
       <AnimatedWrapper variant={fadeInUp}>
@@ -136,10 +138,10 @@ function ContactForm() {
             Let&apos;s start a<br />conversation.
           </h1>
           <p
-            className="mt-5 text-muted-foreground leading-relaxed"
+            className="mt-5 font-sans text-muted-foreground leading-relaxed"
             style={{ fontSize: "clamp(0.875rem, 2vw, 0.9375rem)" }}
           >
-            Job opportunities, collaborations, or just a question — I&apos;ll get back to you within 24 hours.
+            Job opportunities, collaborations, or just a question.
           </p>
         </AnimatedWrapper>
 
@@ -223,7 +225,7 @@ function ContactForm() {
             <button
               type="submit"
               disabled={formState === "loading"}
-              className="inline-flex items-center gap-1.5 min-h-[44px] text-sm font-medium text-foreground/85 hover:text-accent-signal transition-colors duration-300 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed group"
+              className="inline-flex items-center gap-1.5 min-h-[44px] font-sans text-base font-semibold text-foreground/85 hover:text-accent-signal transition-colors duration-300 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed group"
             >
               {formState === "loading" ? (
                 "Sending…"
@@ -237,7 +239,7 @@ function ContactForm() {
                 </>
               )}
             </button>
-            <p className="mt-5 text-[12px] text-muted-foreground/50 leading-relaxed">
+            <p className="mt-5 font-sans text-[12px] text-muted-foreground/50 leading-relaxed">
               Protected by reCAPTCHA —{" "}
               <a
                 href="https://policies.google.com/privacy"

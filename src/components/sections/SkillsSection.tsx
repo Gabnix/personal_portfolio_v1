@@ -25,7 +25,7 @@ export function SkillsSection() {
       <div className="pb-12 lg:py-24">
 
         {/* Desktop overline */}
-        <AnimatedWrapper variant={fadeInUp} className="hidden lg:block">
+        <AnimatedWrapper variant={fadeInUp} className="hidden">
           <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-8">
             Stack
           </p>
@@ -36,7 +36,7 @@ export function SkillsSection() {
             <AnimatedWrapper key={category} variant={fadeInUp} delay={i * 0.06}>
               <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-6">
                 <dt className="sm:w-32 sm:shrink-0 sm:pt-[3px]">
-                  <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                  <span className="font-sans text-[12px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                     {category}
                   </span>
                 </dt>

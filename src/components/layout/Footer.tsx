@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border">
       <div className="mx-auto max-w-3xl px-6 sm:px-10 py-5 flex items-center justify-between">
-        <p className="text-xs text-muted-foreground">
+        <p className="font-sans text-xs text-muted-foreground">
           © {new Date().getFullYear()} {SITE_NAME}
         </p>
 

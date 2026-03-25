@@ -100,7 +100,7 @@
   /* Electric Moss vibrant variant — oklch(62% 0.16 145).
      WCAG AA verified: ~6.3:1 on Deep Obsidian. */
   --accent-signal: oklch(0.62 0.16 145);
-  --spotlight-color: oklch(0.62 0.16 145 / 0.08);
+  --spotlight-color: oklch(0.92 0.005 260 / 0.04);
   --accent-signal-fg: oklch(0.12 0.04 145);
   /* Deep Obsidian — blue-tinted dark, spec: oklch(18% 0.01 260) */
   --background: oklch(0.18 0.01 260);
@@ -145,7 +145,7 @@
   }
   html {
     @apply font-sans;
-    font-size: 17.5px;
+    font-size: 16px;
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
   }
@@ -170,12 +170,12 @@
     box-shadow 0.3s ease;
 }
 .ghost-card:hover {
-  background-color: oklch(0.13 0 0 / 0.04);
-  box-shadow: inset 0 1px 0 0 oklch(0.13 0 0 / 0.06);
+  background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
+  box-shadow: inset 0 1px 0 0 color-mix(in oklch, var(--foreground) 6%, transparent);
 }
 .dark .ghost-card:hover {
-  background-color: oklch(0.92 0.01 260 / 0.05);
-  box-shadow: inset 0 1px 0 0 oklch(0.92 0.01 260 / 0.08);
+  background-color: color-mix(in oklch, var(--foreground) 5%, transparent);
+  box-shadow: inset 0 1px 0 0 color-mix(in oklch, var(--foreground) 8%, transparent);
 }
 /* Pills intensify on card hover */
 .ghost-card:hover .tech-pill {
@@ -192,6 +192,7 @@
   align-items: center;
   padding: 2px 7px 3px;
   border-radius: 4px;
+  font-family: var(--font-inter);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.04em;

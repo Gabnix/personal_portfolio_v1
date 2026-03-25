@@ -47,7 +47,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
           >
             {entry.role}
           </h1>
-          <p className="mt-3 text-sm text-muted-foreground">
+          <p className="mt-3 font-sans text-sm text-muted-foreground">
             <span className="font-medium text-foreground/65">{entry.company}</span>
             <span className="mx-2 text-foreground/20" aria-hidden="true">·</span>
             <span className="tabular-nums">{entry.period}</span>
@@ -60,7 +60,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
         <div className="mt-10 pt-8 border-t border-border">
           {entry.description.length === 1 ? (
             <p
-              className="text-muted-foreground leading-relaxed"
+              className="font-sans text-muted-foreground leading-relaxed"
               style={{ fontSize: "clamp(0.9375rem, 2vw, 1.0625rem)" }}
             >
               {entry.description[0]}
@@ -70,7 +70,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
               {entry.description.map((line, i) => (
                 <li
                   key={i}
-                  className="text-muted-foreground leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.6em] before:h-px before:w-2 before:bg-muted-foreground/40"
+                  className="font-sans text-muted-foreground leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.6em] before:h-px before:w-2 before:bg-muted-foreground/40"
                   style={{ fontSize: "clamp(0.9375rem, 2vw, 1.0625rem)" }}
                 >
                   {line}
