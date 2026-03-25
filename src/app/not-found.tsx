@@ -70,10 +70,10 @@ export default function NotFound() {
             <motion.div {...entry(0.26)} className="mt-6">
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 px-5 py-2.5 border border-foreground/20 rounded font-sans text-sm font-semibold text-foreground/85 hover:border-accent-signal hover:text-accent-signal transition-colors duration-300 group"
+                className="inline-flex items-center gap-2 min-h-[44px] font-sans text-base font-semibold text-foreground/85 hover:text-accent-signal transition-colors duration-300 group"
               >
                 <ArrowLeft
-                  className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5"
+                  className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5"
                   aria-hidden="true"
                 />
                 <span>{"Help him rebuild "}<span className="text-accent-signal group-hover:text-inherit transition-colors duration-300">home</span></span>
