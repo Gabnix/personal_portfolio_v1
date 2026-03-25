@@ -23,7 +23,8 @@ export function AboutSection() {
               I&apos;m a software engineer focused on building high-performance
               web systems — from distributed backends to precise, well-crafted
               UIs. I care about the details: clean architecture, measurable
-              performance, and interfaces that feel inevitable.
+              performance, and{" "}
+              <span className="text-foreground font-medium">interfaces that feel inevitable</span>.
             </p>
             <p>
               I bring an engineering-first mindset to every problem, but

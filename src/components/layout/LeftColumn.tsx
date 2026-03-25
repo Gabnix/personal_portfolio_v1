@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 const NAV_ITEMS = [
   { label: "About", sectionId: "about" },
   { label: "Experience", sectionId: "experience" },
+  { label: "Projects", sectionId: "projects" },
   { label: "Stack", sectionId: "skills" },
   { label: "Contact", sectionId: "contact" },
 ] as const;
@@ -86,7 +87,7 @@ export function LeftColumn() {
           <Link href="/" aria-label="Home">
             <h1
               className="font-display font-semibold text-foreground leading-none hover:text-foreground/75 transition-colors duration-200"
-              style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.25rem)", letterSpacing: "-0.025em" }}
+              style={{ fontSize: "clamp(2.25rem, 4.5vw, 3.25rem)", letterSpacing: "-0.03em" }}
             >
               Jim Ling
             </h1>
@@ -116,7 +117,7 @@ export function LeftColumn() {
                 href={`#${sectionId}`}
                 onClick={(e) => handleNavClick(sectionId, e)}
                 className="group flex items-center gap-4 py-0.5"
-                aria-current={isActive ? "true" : undefined}
+                aria-current={isActive ? "location" : undefined}
               >
                 <span
                   className={cn(

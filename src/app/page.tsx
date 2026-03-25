@@ -2,6 +2,7 @@ import { LeftColumn } from "@/components/layout/LeftColumn";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Footer } from "@/components/layout/Footer";
 
@@ -20,6 +21,7 @@ export default function HomePage() {
           <div className="pb-20 lg:flex-1 lg:pt-24 lg:pb-[50vh] lg:min-w-0">
             <AboutSection />
             <ExperienceSection />
+            <ProjectsSection />
             <SkillsSection />
             <ContactSection />
           </div>
