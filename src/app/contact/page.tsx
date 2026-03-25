@@ -1,21 +1,22 @@
 "use client";
 
 import { useRef, useState, useCallback } from "react";
-import Link from "next/link";
 import {
   GoogleReCaptchaProvider,
   useGoogleReCaptcha,
 } from "react-google-recaptcha-v3";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { AnimatedWrapper } from "@/components/shared/AnimatedWrapper";
+import { BackToHome } from "@/components/shared/BackToHome";
 import { fadeInUp } from "@/lib/animations";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
+/* ── Field base style ──────────────────────────────────────────── */
 const FIELD_BASE =
-  "w-full bg-transparent border-b border-foreground/10 py-3 min-h-[44px] text-foreground " +
-  "placeholder:text-muted-foreground/50 placeholder:text-sm focus:outline-none focus:border-foreground/40 " +
-  "transition-colors font-sans";
+  "w-full bg-transparent border-b border-foreground/10 py-3 min-h-[44px] " +
+  "text-foreground placeholder:text-muted-foreground/40 placeholder:text-sm " +
+  "focus:outline-none focus:border-indigo-accent/60 transition-colors duration-200 font-sans text-sm";
 
 function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -33,7 +34,6 @@ function ContactForm() {
       const email = (form.elements.namedItem("from_email") as HTMLInputElement).value.trim();
       const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
 
-      // Client-side validation
       if (!name || !email || !message) {
         setFormState("error");
         setErrorMsg("All fields are required.");
@@ -83,78 +83,76 @@ function ContactForm() {
     [executeRecaptcha]
   );
 
-  /* ── Success state ──────────────────────────────────────────────── */
+  /* ── Success state ──────────────────────────────────────────── */
   if (formState === "success") {
     return (
-      <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
-      <AnimatedWrapper variant={fadeInUp}>
-        <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mb-6">
-          Message Sent
-        </p>
-        <h1
-          className="font-display font-light text-foreground leading-[0.92]"
-          style={{
-            fontSize: "clamp(2rem, 5vw, 3.5rem)",
-            letterSpacing: "-0.03em",
-          }}
-        >
-          I&apos;ll be in touch.
-        </h1>
-        <p
-          className="mt-6 text-muted-foreground leading-relaxed max-w-sm"
-          style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
-        >
-          Thanks for reaching out. I typically respond within 24–48 hours.
-        </p>
-        <Link
-          href="/"
-          className="inline-flex items-center min-h-[44px] gap-2 mt-10 text-sm text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
-          Back to home
-        </Link>
-      </AnimatedWrapper>
+      <div className="mx-auto max-w-2xl px-6 sm:px-10 pt-12 sm:pt-16 pb-24">
+        <AnimatedWrapper variant={fadeInUp}>
+          <BackToHome />
+          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mt-12 mb-4">
+            Message Sent
+          </p>
+          <h1
+            className="font-display font-semibold text-foreground leading-tight"
+            style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", letterSpacing: "-0.025em" }}
+          >
+            I&apos;ll be in touch.
+          </h1>
+          <p
+            className="mt-5 text-muted-foreground leading-relaxed max-w-sm"
+            style={{ fontSize: "clamp(0.9375rem, 2vw, 1rem)" }}
+          >
+            Thanks for reaching out. I typically respond within 24–48 hours.
+          </p>
+        </AnimatedWrapper>
       </div>
     );
   }
 
-  /* ── Form ───────────────────────────────────────────────────────── */
+  /* ── Form ───────────────────────────────────────────────────── */
   return (
-    <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
-      <div className="grid md:grid-cols-2 gap-16 items-start">
+    <div className="mx-auto max-w-3xl px-6 sm:px-10 pt-12 sm:pt-16 pb-24">
 
-        {/* ── Left: editorial heading ──────────────────────────────── */}
-        <AnimatedWrapper variant={fadeInUp}>
+      {/* ── Back to home ──────────────────────────────────────────── */}
+      <AnimatedWrapper variant={fadeInUp}>
+        <BackToHome />
+      </AnimatedWrapper>
+
+      <div className="grid md:grid-cols-[1fr_1fr] gap-16 items-start mt-12">
+
+        {/* ── Left: heading ─────────────────────────────────────── */}
+        <AnimatedWrapper variant={fadeInUp} delay={0.05}>
+          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-4">
+            Contact
+          </p>
           <h1
-            className="font-display font-light text-foreground leading-[0.92]"
-            style={{
-              fontSize: "clamp(2rem, 5vw, 3.5rem)",
-              letterSpacing: "-0.03em",
-            }}
+            className="font-display font-semibold text-foreground leading-tight"
+            style={{ fontSize: "clamp(1.75rem, 4vw, 2.25rem)", letterSpacing: "-0.025em" }}
           >
             Let&apos;s start a<br />conversation.
           </h1>
           <p
-            className="mt-6 text-muted-foreground leading-relaxed max-w-xs"
-            style={{ fontSize: "clamp(0.9375rem, 2vw, 1rem)" }}
+            className="mt-5 text-muted-foreground leading-relaxed"
+            style={{ fontSize: "clamp(0.875rem, 2vw, 0.9375rem)" }}
           >
-            Whether it&apos;s about job opportunities or potential collaborations, I&apos;ll get back to you within 24 hours.
+            Job opportunities, collaborations, or just a question — I&apos;ll get back to you within 24 hours.
           </p>
         </AnimatedWrapper>
 
-        {/* ── Right: form ─────────────────────────────────────────── */}
+        {/* ── Right: form ───────────────────────────────────────── */}
         <form
           ref={formRef}
           onSubmit={handleSubmit}
           noValidate
           className="space-y-8"
         >
+
           {/* Name */}
-          <AnimatedWrapper variant={fadeInUp} delay={0.1}>
+          <AnimatedWrapper variant={fadeInUp} delay={0.08}>
             <div className="space-y-2">
               <label
                 htmlFor="from_name"
-                className="block font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground"
+                className="block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
               >
                 Name
               </label>
@@ -166,17 +164,16 @@ function ContactForm() {
                 autoComplete="name"
                 placeholder="Your name"
                 className={FIELD_BASE}
-                style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
               />
             </div>
           </AnimatedWrapper>
 
           {/* Email */}
-          <AnimatedWrapper variant={fadeInUp} delay={0.2}>
+          <AnimatedWrapper variant={fadeInUp} delay={0.14}>
             <div className="space-y-2">
               <label
                 htmlFor="from_email"
-                className="block font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground"
+                className="block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
               >
                 Email
               </label>
@@ -188,17 +185,16 @@ function ContactForm() {
                 autoComplete="email"
                 placeholder="you@example.com"
                 className={FIELD_BASE}
-                style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
               />
             </div>
           </AnimatedWrapper>
 
           {/* Message */}
-          <AnimatedWrapper variant={fadeInUp} delay={0.3}>
+          <AnimatedWrapper variant={fadeInUp} delay={0.2}>
             <div className="space-y-2">
               <label
                 htmlFor="message"
-                className="block font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground"
+                className="block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
               >
                 Message
               </label>
@@ -207,39 +203,39 @@ function ContactForm() {
                 name="message"
                 required
                 rows={5}
-                placeholder="What's on your mind?"
+                placeholder="What&apos;s on your mind?"
                 className={`${FIELD_BASE} resize-none`}
-                style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
               />
             </div>
           </AnimatedWrapper>
 
-          {/* Error message */}
+          {/* Error */}
           {formState === "error" && errorMsg && (
-            <p className="text-sm text-destructive leading-relaxed">
-              {errorMsg}
-            </p>
+            <p className="text-sm text-destructive leading-relaxed">{errorMsg}</p>
           )}
 
           {/* Submit */}
-          <AnimatedWrapper variant={fadeInUp} delay={0.4}>
+          <AnimatedWrapper variant={fadeInUp} delay={0.26}>
             <button
               type="submit"
               disabled={formState === "loading"}
-              className="inline-flex items-center min-h-[44px] gap-2 text-base font-medium text-foreground/90 hover:text-foreground hover:gap-3 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-1.5 min-h-[44px] text-sm font-medium text-foreground/85 hover:text-indigo-accent transition-colors duration-200 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed group"
             >
               {formState === "loading" ? (
-                "Sending..."
+                "Sending…"
               ) : (
                 <>
-                  Send a message
-                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  Send message
+                  <ArrowUpRight
+                    className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    aria-hidden="true"
+                  />
                 </>
               )}
             </button>
           </AnimatedWrapper>
-        </form>
 
+        </form>
       </div>
     </div>
   );

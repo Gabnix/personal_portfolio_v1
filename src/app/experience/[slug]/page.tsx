@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
 import { AnimatedWrapper } from "@/components/shared/AnimatedWrapper";
+import { BackToHome } from "@/components/shared/BackToHome";
+import { fadeInUp } from "@/lib/animations";
 import { getExperienceBySlug, experience } from "@/data/experience";
 
 interface Props {
@@ -26,35 +26,41 @@ export default async function ExperienceDetailPage({ params }: Props) {
   if (!entry) notFound();
 
   return (
-    <div className="max-w-3xl mx-auto px-6 pt-32 pb-24">
-      <AnimatedWrapper>
-        <Link
-          href="/experience"
-          className="inline-flex items-center min-h-[44px] gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <ArrowLeft className="h-3 w-3" aria-hidden="true" />
-          All experience
-        </Link>
+    <div className="mx-auto max-w-2xl px-6 sm:px-10 pt-12 sm:pt-16 pb-24">
 
-        <p className="font-medium text-xs uppercase tracking-[0.18em] text-muted-foreground mt-8 mb-3">
-          Work History
-        </p>
-        <h1
-          className="font-display font-medium leading-tight text-foreground"
-          style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", letterSpacing: "-0.03em" }}
-        >
-          {entry.role}
-        </h1>
+      {/* ── Back to home ──────────────────────────────────────────── */}
+      <AnimatedWrapper variant={fadeInUp}>
+        <BackToHome />
+      </AnimatedWrapper>
 
-        <p className="mt-3 text-sm text-muted-foreground">
-          <span className="font-medium">{entry.company}</span>
-          <span className="mx-2 opacity-40">·</span>
-          <span className="tabular-nums">{entry.period}</span>
-        </p>
+      {/* ── Role header ───────────────────────────────────────────── */}
+      <AnimatedWrapper variant={fadeInUp} delay={0.06}>
+        <div className="mt-10">
+          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-4">
+            Work History
+          </p>
+          <h1
+            className="font-display font-semibold text-foreground leading-tight"
+            style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", letterSpacing: "-0.025em" }}
+          >
+            {entry.role}
+          </h1>
+          <p className="mt-3 text-sm text-muted-foreground">
+            <span className="font-medium text-foreground/65">{entry.company}</span>
+            <span className="mx-2 text-foreground/20" aria-hidden="true">·</span>
+            <span className="tabular-nums">{entry.period}</span>
+          </p>
+        </div>
+      </AnimatedWrapper>
 
-        <div className="mt-10 border-t border-border pt-8">
+      {/* ── Body ──────────────────────────────────────────────────── */}
+      <AnimatedWrapper variant={fadeInUp} delay={0.12}>
+        <div className="mt-10 pt-8 border-t border-border">
           {entry.description.length === 1 ? (
-            <p className="text-muted-foreground leading-relaxed" style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}>
+            <p
+              className="text-muted-foreground leading-relaxed"
+              style={{ fontSize: "clamp(0.9375rem, 2vw, 1.0625rem)" }}
+            >
               {entry.description[0]}
             </p>
           ) : (
@@ -62,16 +68,26 @@ export default async function ExperienceDetailPage({ params }: Props) {
               {entry.description.map((line, i) => (
                 <li
                   key={i}
-                  className="text-muted-foreground leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.65em] before:h-px before:w-2 before:bg-muted-foreground/40"
-                  style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
+                  className="text-muted-foreground leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.6em] before:h-px before:w-2 before:bg-muted-foreground/40"
+                  style={{ fontSize: "clamp(0.9375rem, 2vw, 1.0625rem)" }}
                 >
                   {line}
                 </li>
               ))}
             </ul>
           )}
+
+          {/* Tech pills */}
+          {entry.tech && entry.tech.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mt-8">
+              {entry.tech.map((t) => (
+                <span key={t} className="tech-pill">{t}</span>
+              ))}
+            </div>
+          )}
         </div>
       </AnimatedWrapper>
+
     </div>
   );
 }

@@ -87,6 +87,9 @@ export function Navbar() {
     }
   };
 
+  // Home page has its own sticky left-column navigation — no global nav needed
+  if (pathname === "/") return null;
+
   return (
     <>
       <motion.header

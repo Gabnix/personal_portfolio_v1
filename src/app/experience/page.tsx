@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { AnimatedWrapper } from "@/components/shared/AnimatedWrapper";
+import { BackToHome } from "@/components/shared/BackToHome";
 import { fadeInUp } from "@/lib/animations";
 import { experience } from "@/data/experience";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Experience — Jim Ling",
@@ -10,62 +13,95 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
+    <div className="mx-auto max-w-3xl px-6 sm:px-10 pt-12 sm:pt-16 pb-24">
+
+      {/* ── Back to home ──────────────────────────────────────────── */}
       <AnimatedWrapper variant={fadeInUp}>
-        <h1
-          className="font-display font-medium leading-tight text-foreground"
-          style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", letterSpacing: "-0.03em" }}
-        >
-          Experience
-        </h1>
+        <BackToHome />
       </AnimatedWrapper>
 
-      <div className="mt-16">
+      {/* ── Page header ───────────────────────────────────────────── */}
+      <AnimatedWrapper variant={fadeInUp} delay={0.06}>
+        <div className="mt-10">
+          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-4">
+            Work History
+          </p>
+          <h1
+            className="font-display font-semibold text-foreground leading-tight"
+            style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", letterSpacing: "-0.025em" }}
+          >
+            Experience
+          </h1>
+        </div>
+      </AnimatedWrapper>
+
+      {/* ── Experience list ───────────────────────────────────────── */}
+      <div className="mt-12 space-y-1">
         {experience.map((entry, i) => (
-          <AnimatedWrapper key={entry.slug} variant={fadeInUp} delay={i * 0.08}>
-            <div className="grid md:grid-cols-[160px_1fr] gap-x-12 py-8 border-t border-foreground/5">
+          <AnimatedWrapper key={entry.slug} variant={fadeInUp} delay={0.1 + i * 0.07}>
+            <Link
+              href={`/experience/${entry.slug}`}
+              className={cn(
+                "ghost-card group block -mx-4 px-4 py-4",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-accent focus-visible:rounded-lg"
+              )}
+            >
+              <div className="grid sm:grid-cols-[130px_1fr] gap-x-8 gap-y-1">
 
-              <p className="text-base text-muted-foreground tabular-nums mb-3 md:mb-0 pt-1">
-                {entry.period}
-              </p>
-
-              <div>
-                <Link
-                  href={`/experience/${entry.slug}`}
-                  className="font-medium text-foreground/90 leading-snug hover:text-foreground transition-colors"
-                  style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
-                >
-                  {entry.role}
-                </Link>
-                <p className="text-sm font-medium text-muted-foreground mt-1">
-                  {entry.company}
+                {/* Date */}
+                <p className="text-sm text-muted-foreground tabular-nums leading-relaxed sm:pt-[3px]">
+                  {entry.period}
                 </p>
-                {entry.description.length === 1 ? (
-                  <p
-                    className="mt-3 text-muted-foreground leading-relaxed"
-                    style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
-                  >
-                    {entry.description[0]}
-                  </p>
-                ) : (
-                  <ul className="mt-3 space-y-2">
-                    {entry.description.map((line, j) => (
-                      <li
-                        key={j}
-                        className="text-muted-foreground leading-relaxed pl-3 relative before:absolute before:left-0 before:top-[0.65em] before:h-px before:w-1.5 before:bg-muted-foreground/40"
-                        style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
-                      >
-                        {line}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
 
-            </div>
+                {/* Role + meta + description + pills */}
+                <div>
+                  <div className="flex items-start gap-1.5">
+                    <h2
+                      className="font-display font-medium text-foreground/85 leading-snug group-hover:text-indigo-accent transition-colors duration-200"
+                      style={{ fontSize: "clamp(0.9375rem, 2vw, 1rem)" }}
+                    >
+                      {entry.role}
+                    </h2>
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 mt-[3px] shrink-0 text-muted-foreground/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <p className="text-sm font-medium text-muted-foreground mt-0.5">
+                    {entry.company}
+                  </p>
+
+                  {entry.description.length === 1 ? (
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                      {entry.description[0]}
+                    </p>
+                  ) : (
+                    <ul className="mt-2 space-y-1.5">
+                      {entry.description.map((line, j) => (
+                        <li
+                          key={j}
+                          className="text-sm text-muted-foreground leading-relaxed pl-3 relative before:absolute before:left-0 before:top-[0.6em] before:h-px before:w-1.5 before:bg-muted-foreground/40"
+                        >
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {entry.tech && entry.tech.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mt-3">
+                      {entry.tech.map((t) => (
+                        <span key={t} className="tech-pill">{t}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </Link>
           </AnimatedWrapper>
         ))}
       </div>
+
     </div>
   );
 }

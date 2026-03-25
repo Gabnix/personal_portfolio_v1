@@ -9,6 +9,7 @@ export const experience: Experience[] = [
     description: [
       "Leading architecture for a distributed platform processing millions of events per day, with a focus on latency reduction and operational reliability.",
     ],
+    tech: ["TypeScript", "Node.js", "Kafka", "Redis", "PostgreSQL", "Docker"],
   },
   {
     slug: "software-engineer",
@@ -18,6 +19,7 @@ export const experience: Experience[] = [
     description: [
       "Built and maintained a core API layer serving web and mobile clients, reducing p99 response times by 40% through query optimisation and caching.",
     ],
+    tech: ["TypeScript", "Express", "React", "MySQL", "AWS"],
   },
   {
     slug: "junior-software-engineer",
@@ -27,6 +29,7 @@ export const experience: Experience[] = [
     description: [
       "Developed internal tooling and automation that cut deployment time from 45 minutes to under 5, adopted across three product teams.",
     ],
+    tech: ["Python", "Django", "Docker", "GitHub Actions"],
   },
 ];
 

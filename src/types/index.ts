@@ -22,6 +22,7 @@ export interface Experience {
   role: string;
   period: string;
   description: string[];
+  tech?: string[];
   logo?: string;
 }
 

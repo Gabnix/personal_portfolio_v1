@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { DM_Sans, Bricolage_Grotesque } from "next/font/google";
+import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/layout/Providers";
-import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { SpotlightOverlay } from "@/components/layout/SpotlightOverlay";
 import { Toaster } from "@/components/ui/sonner";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/lib/constants";
 
-const dmSans = DM_Sans({
+const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
 
-const bricolage = Bricolage_Grotesque({
+const interTight = Inter_Tight({
   variable: "--font-inter-tight",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -32,8 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${dmSans.variable} ${bricolage.variable} antialiased`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${interTight.variable} antialiased`} suppressHydrationWarning>
         <Providers>
+          {/* Mouse-following spotlight — global, stays below all UI (z-[1]) */}
+          <SpotlightOverlay />
           {/* Skip-to-content: invisible until focused, satisfies WCAG 2.4.1 */}
           <a
             href="#main-content"
@@ -41,7 +43,6 @@ export default function RootLayout({
           >
             Skip to content
           </a>
-          <Navbar />
           <main id="main-content" className="min-h-screen">{children}</main>
           <Footer />
           <Toaster />
