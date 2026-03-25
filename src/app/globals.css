@@ -206,6 +206,20 @@
   color: oklch(0.72 0.14 145);
 }
 
+/* ── 404 beaver illustration — blend-mode swap for light/dark ───── */
+/* Blend mode lives on the outer wrapper (not inside the opacity-animated
+   motion.div) so it composites against the page background correctly.
+   Filter stays on the image itself. */
+.beaver-wrapper {
+  mix-blend-mode: multiply;
+}
+.dark .beaver-wrapper {
+  mix-blend-mode: screen;
+}
+.dark .beaver-img {
+  filter: invert(1);
+}
+
 /* ── reCAPTCHA badge — hidden per Google's allowance; attribution shown in form ── */
 .grecaptcha-badge {
   visibility: hidden !important;
