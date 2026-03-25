@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/layout/Providers";
-import { Footer } from "@/components/layout/Footer";
 import { SpotlightOverlay } from "@/components/layout/SpotlightOverlay";
 import { Toaster } from "@/components/ui/sonner";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/lib/constants";
@@ -43,8 +42,7 @@ export default function RootLayout({
           >
             Skip to content
           </a>
-          <main id="main-content" className="min-h-screen">{children}</main>
-          <Footer />
+          <main id="main-content" className="min-h-screen flex flex-col">{children}</main>
           <Toaster />
         </Providers>
       </body>

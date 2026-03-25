@@ -23,29 +23,46 @@ export function LeftColumn() {
   const suppressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    const handleScroll = () => {
+      if (suppressRef.current) return;
 
-    NAV_ITEMS.forEach(({ sectionId }) => {
-      const el = document.getElementById(sectionId);
-      if (!el) return;
+      const vh = window.innerHeight;
+      const center = vh / 2;
+      let active = "";
+      let closestDist = Infinity;
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting && !suppressRef.current) {
-            setActiveSection(sectionId);
-          }
-        },
-        { rootMargin: "-28% 0px -60% 0px" }
-      );
+      for (const { sectionId } of NAV_ITEMS) {
+        const el = document.getElementById(sectionId);
+        if (!el) continue;
+        const { top, bottom } = el.getBoundingClientRect();
 
-      observer.observe(el);
-      observers.push(observer);
-    });
+        // Skip sections entirely outside the viewport
+        if (bottom <= 0 || top >= vh) continue;
 
-    return () => observers.forEach((o) => o.disconnect());
+        // Midpoint of the visible slice of this section
+        const visibleCenter = (Math.max(top, 0) + Math.min(bottom, vh)) / 2;
+        const dist = Math.abs(visibleCenter - center);
+
+        if (dist < closestDist) {
+          closestDist = dist;
+          active = sectionId;
+        }
+      }
+
+      if (active) setActiveSection(active);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = useCallback((sectionId: string) => {
+  const handleNavClick = useCallback((sectionId: string, e: React.MouseEvent<HTMLAnchorElement>) => {
+    // "About" lives at the very top — scroll to 0 instead of the element
+    if (sectionId === "about") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
     setActiveSection(sectionId);
     suppressRef.current = true;
     if (suppressTimerRef.current) clearTimeout(suppressTimerRef.current);
@@ -69,18 +86,18 @@ export function LeftColumn() {
           <Link href="/" aria-label="Home">
             <h1
               className="font-display font-semibold text-foreground leading-none hover:text-foreground/75 transition-colors duration-200"
-              style={{ fontSize: "clamp(1.5rem, 3vw, 1.875rem)", letterSpacing: "-0.025em" }}
+              style={{ fontSize: "clamp(1.725rem, 3.45vw, 2.15rem)", letterSpacing: "-0.025em" }}
             >
               Jim Ling
             </h1>
           </Link>
           <p
-            className="mt-2 font-display font-medium text-foreground/60"
-            style={{ fontSize: "clamp(0.875rem, 1.5vw, 1rem)", letterSpacing: "-0.01em" }}
+            className="mt-2 font-display font-medium text-foreground/60 dark:text-foreground/80"
+            style={{ fontSize: "clamp(1rem, 1.725vw, 1.15rem)", letterSpacing: "-0.01em" }}
           >
             Software Engineer
           </p>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground max-w-[260px]">
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground max-w-sm">
             I build fast, reliable web systems with clean architecture and thoughtfully crafted UIs.
           </p>
         </motion.div>
@@ -97,7 +114,7 @@ export function LeftColumn() {
               <a
                 key={sectionId}
                 href={`#${sectionId}`}
-                onClick={() => handleNavClick(sectionId)}
+                onClick={(e) => handleNavClick(sectionId, e)}
                 className="group flex items-center gap-4 py-0.5"
                 aria-current={isActive ? "true" : undefined}
               >
@@ -111,7 +128,7 @@ export function LeftColumn() {
                 />
                 <span
                   className={cn(
-                    "font-sans text-[11px] font-medium uppercase tracking-[0.18em] transition-colors duration-200",
+                    "font-sans text-[14px] font-medium uppercase tracking-[0.18em] transition-colors duration-200",
                     isActive
                       ? "text-accent-signal"
                       : "text-muted-foreground group-hover:text-foreground/65"
@@ -134,7 +151,7 @@ export function LeftColumn() {
           className="inline-flex items-center justify-center h-10 w-10 rounded-lg text-muted-foreground hero-social-icon"
           aria-label="GitHub"
         >
-          <Github className="h-[18px] w-[18px]" aria-hidden="true" />
+          <Github className="h-[21px] w-[21px]" aria-hidden="true" />
         </a>
         <a
           href={SOCIAL_LINKS.linkedin}
@@ -143,14 +160,14 @@ export function LeftColumn() {
           className="inline-flex items-center justify-center h-10 w-10 rounded-lg text-muted-foreground hero-social-icon"
           aria-label="LinkedIn"
         >
-          <Linkedin className="h-[18px] w-[18px]" aria-hidden="true" />
+          <Linkedin className="h-[21px] w-[21px]" aria-hidden="true" />
         </a>
         <CopyEmail
           email={SITE_EMAIL}
           className="inline-flex items-center justify-center h-10 w-10 rounded-lg text-muted-foreground hero-social-icon cursor-pointer"
           aria-label="Copy email address"
         >
-          <Mail className="h-[18px] w-[18px]" aria-hidden="true" />
+          <Mail className="h-[21px] w-[21px]" aria-hidden="true" />
         </CopyEmail>
         <ThemeToggle />
       </motion.div>

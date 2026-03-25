@@ -8,15 +8,15 @@ export default function HomePage() {
   return (
     <div className="relative isolate">
       <div className="mx-auto max-w-screen-xl px-6 sm:px-10 lg:px-16">
-        <div className="lg:flex lg:gap-16 xl:gap-24">
+        <div className="lg:flex lg:gap-12 xl:gap-16">
 
           {/* ── Left Column — static intro on mobile, sticky sidebar on desktop ── */}
-          <aside className="pt-16 pb-10 lg:pt-0 lg:pb-0 lg:w-[360px] lg:shrink-0 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto">
+          <aside className="pt-16 pb-10 lg:pt-0 lg:pb-0 lg:flex-1 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto">
             <LeftColumn />
           </aside>
 
           {/* ── Right Column — scrollable content stream ─────────────────────── */}
-          <div className="lg:flex-1 lg:py-24 lg:min-w-0">
+          <div className="pb-20 lg:flex-1 lg:pt-24 lg:pb-[50vh] lg:min-w-0">
             <AboutSection />
             <ExperienceSection />
             <SkillsSection />

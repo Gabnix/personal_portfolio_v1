@@ -15,7 +15,7 @@ export function ContactSection() {
 
         <AnimatedWrapper variant={fadeInUp}>
           {/* Overline — static on all breakpoints for Contact (last section, no sticky needed) */}
-          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-8">
+          <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-8">
             Contact
           </p>
 

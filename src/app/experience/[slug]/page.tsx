@@ -4,6 +4,7 @@ import { AnimatedWrapper } from "@/components/shared/AnimatedWrapper";
 import { BackToHome } from "@/components/shared/BackToHome";
 import { fadeInUp } from "@/lib/animations";
 import { getExperienceBySlug, experience } from "@/data/experience";
+import { Footer } from "@/components/layout/Footer";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -26,7 +27,8 @@ export default async function ExperienceDetailPage({ params }: Props) {
   if (!entry) notFound();
 
   return (
-    <div className="mx-auto max-w-2xl px-6 sm:px-10 pt-12 sm:pt-16 pb-24">
+    <>
+    <div className="flex-1 mx-auto w-full max-w-3xl px-6 sm:px-10 pt-12 sm:pt-16 pb-24">
 
       {/* ── Back to home ──────────────────────────────────────────── */}
       <AnimatedWrapper variant={fadeInUp}>
@@ -36,7 +38,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
       {/* ── Role header ───────────────────────────────────────────── */}
       <AnimatedWrapper variant={fadeInUp} delay={0.06}>
         <div className="mt-10">
-          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-4">
+          <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-4">
             Work History
           </p>
           <h1
@@ -89,5 +91,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
       </AnimatedWrapper>
 
     </div>
+    <Footer />
+    </>
   );
 }

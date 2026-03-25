@@ -6,6 +6,7 @@ import { BackToHome } from "@/components/shared/BackToHome";
 import { fadeInUp } from "@/lib/animations";
 import { experience } from "@/data/experience";
 import { cn } from "@/lib/utils";
+import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Experience — Jim Ling",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
+    <>
     <div className="mx-auto max-w-3xl px-6 sm:px-10 pt-12 sm:pt-16 pb-24">
 
       {/* ── Back to home ──────────────────────────────────────────── */}
@@ -23,7 +25,7 @@ export default function ExperiencePage() {
       {/* ── Page header ───────────────────────────────────────────── */}
       <AnimatedWrapper variant={fadeInUp} delay={0.06}>
         <div className="mt-10">
-          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-4">
+          <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-4">
             Work History
           </p>
           <h1
@@ -103,5 +105,7 @@ export default function ExperiencePage() {
       </div>
 
     </div>
+    <Footer />
+    </>
   );
 }

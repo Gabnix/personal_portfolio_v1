@@ -74,7 +74,7 @@ export function CopyEmail({
             className="fixed z-[999] pointer-events-none"
             style={{ left: pos.x + 14, top: pos.y - 10 }}
           >
-            <span className="inline-flex items-center gap-1 rounded-full bg-foreground px-2.5 py-1 font-sans font-medium text-[11px] uppercase tracking-[0.12em] text-background">
+            <span className="inline-flex items-center gap-1 rounded-full bg-foreground px-2.5 py-1 font-sans font-medium text-[12px] uppercase tracking-[0.12em] text-background">
               {copied ? "Copied" : "Copy"}
             </span>
           </motion.span>

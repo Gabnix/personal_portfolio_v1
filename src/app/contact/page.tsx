@@ -8,6 +8,7 @@ import {
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { AnimatedWrapper } from "@/components/shared/AnimatedWrapper";
 import { BackToHome } from "@/components/shared/BackToHome";
+import { Footer } from "@/components/layout/Footer";
 import { fadeInUp } from "@/lib/animations";
 
 type FormState = "idle" | "loading" | "success" | "error";
@@ -91,7 +92,7 @@ function ContactForm() {
           <BackToHome />
           <div className="mt-12">
             <CheckCircle2 className="h-7 w-7 text-accent-signal mb-5" aria-hidden="true" />
-            <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-signal mb-4">
+            <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-accent-signal mb-4">
               Message Sent
             </p>
             <h1
@@ -125,7 +126,7 @@ function ContactForm() {
 
         {/* ── Left: heading ─────────────────────────────────────── */}
         <AnimatedWrapper variant={fadeInUp} delay={0.05}>
-          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-4">
+          <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-4">
             Contact
           </p>
           <h1
@@ -155,7 +156,7 @@ function ContactForm() {
             <div className="space-y-2">
               <label
                 htmlFor="from_name"
-                className="block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
+                className="block font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
               >
                 Name
               </label>
@@ -176,7 +177,7 @@ function ContactForm() {
             <div className="space-y-2">
               <label
                 htmlFor="from_email"
-                className="block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
+                className="block font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
               >
                 Email
               </label>
@@ -197,7 +198,7 @@ function ContactForm() {
             <div className="space-y-2">
               <label
                 htmlFor="message"
-                className="block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
+                className="block font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
               >
                 Message
               </label>
@@ -236,7 +237,7 @@ function ContactForm() {
                 </>
               )}
             </button>
-            <p className="mt-5 text-[11px] text-muted-foreground/50 leading-relaxed">
+            <p className="mt-5 text-[12px] text-muted-foreground/50 leading-relaxed">
               Protected by reCAPTCHA —{" "}
               <a
                 href="https://policies.google.com/privacy"
@@ -267,13 +268,16 @@ function ContactForm() {
 export default function ContactPage() {
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
-  if (!siteKey) {
-    return <ContactForm />;
-  }
-
   return (
-    <GoogleReCaptchaProvider reCaptchaKey={siteKey}>
-      <ContactForm />
-    </GoogleReCaptchaProvider>
+    <>
+      {siteKey ? (
+        <GoogleReCaptchaProvider reCaptchaKey={siteKey}>
+          <ContactForm />
+        </GoogleReCaptchaProvider>
+      ) : (
+        <ContactForm />
+      )}
+      <Footer />
+    </>
   );
 }
