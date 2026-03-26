@@ -20,6 +20,9 @@ const FIELD_BASE =
   "text-foreground placeholder:text-muted-foreground/40 placeholder:text-sm " +
   "focus:outline-none focus:border-accent-signal/50 transition-colors duration-300 font-sans text-sm";
 
+const LABEL_CLASS =
+  "block font-sans text-sm font-medium text-foreground/60 tracking-normal";
+
 function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [formState, setFormState] = useState<FormState>("idle");
@@ -159,7 +162,7 @@ function ContactForm() {
             <div className="space-y-2">
               <label
                 htmlFor="from_name"
-                className="block font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
+                className={LABEL_CLASS}
               >
                 Name
               </label>
@@ -182,7 +185,7 @@ function ContactForm() {
             <div className="space-y-2">
               <label
                 htmlFor="from_email"
-                className="block font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
+                className={LABEL_CLASS}
               >
                 Email
               </label>
@@ -205,7 +208,7 @@ function ContactForm() {
             <div className="space-y-2">
               <label
                 htmlFor="message"
-                className="block font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
+                className={LABEL_CLASS}
               >
                 Message
               </label>
@@ -235,7 +238,7 @@ function ContactForm() {
               type="submit"
               disabled={formState === "loading"}
               aria-busy={formState === "loading"}
-              className="inline-flex items-center gap-2 min-h-[44px] font-sans text-base font-semibold text-foreground/85 hover:text-accent-signal transition-colors duration-300 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed group"
+              className="inline-flex items-center gap-2.5 px-5 py-2.5 min-h-[44px] font-sans text-sm font-semibold rounded-lg border border-foreground/15 text-foreground/85 hover:border-accent-signal hover:text-accent-signal bg-transparent transition-colors duration-200 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed group"
             >
               {formState === "loading" ? (
                 "Sending…"
