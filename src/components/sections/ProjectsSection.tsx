@@ -18,7 +18,7 @@ export function ProjectsSection() {
         </span>
       </div>
 
-      <div className="pb-10 lg:py-16">
+      <div className="pb-16 lg:py-16">
 
         {/* Desktop overline */}
         <AnimatedWrapper variant={fadeInUp} className="hidden">

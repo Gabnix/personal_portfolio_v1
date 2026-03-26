@@ -14,7 +14,7 @@ export function AboutSection() {
         </span>
       </div>
 
-      <div className="pb-10 lg:pt-0 lg:pb-16">
+      <div className="pb-16 lg:pt-0 lg:pb-16">
         <AnimatedWrapper variant={fadeInUp}>
           <div
             className="font-sans space-y-5 text-base leading-relaxed text-muted-foreground max-w-xl"

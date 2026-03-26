@@ -12,7 +12,8 @@
       "Bash(do)",
       "Bash(npm install:*)",
       "Bash(ls \"/Users/gabriel/Downloads/Personal Projects/personal_portfolio_v1\"/.env*)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

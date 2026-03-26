@@ -89,14 +89,14 @@ function ContactForm() {
   if (formState === "success") {
     return (
       <>
-        <div className="flex-1 mx-auto w-full max-w-3xl px-6 sm:px-10 pt-12 sm:pt-16 pb-24 min-h-[60vh]">
+        <div className="flex-1 flex flex-col mx-auto w-full max-w-3xl px-6 sm:px-10 py-12 sm:py-16">
           <AnimatedWrapper variant={fadeInUp}>
             <BackToHome />
-            <div className="mt-12">
-              <CheckCircle2 className="h-7 w-7 text-accent-signal mb-5" aria-hidden="true" />
-              <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-accent-signal mb-4">
-                Message Sent
-              </p>
+          </AnimatedWrapper>
+          <div className="flex-1 flex items-center">
+          <AnimatedWrapper variant={fadeInUp} delay={0.08}>
+            <div>
+              <CheckCircle2 className="h-9 w-9 text-accent-signal mb-6" aria-hidden="true" />
               <h1
                 className="font-display font-semibold text-foreground leading-tight"
                 style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", letterSpacing: "-0.025em" }}
@@ -121,6 +121,7 @@ function ContactForm() {
               </Link>
             </div>
           </AnimatedWrapper>
+          </div>
         </div>
       </>
     );
@@ -128,40 +129,29 @@ function ContactForm() {
 
   /* ── Form ───────────────────────────────────────────────────── */
   return (
-    <div className="flex-1 mx-auto w-full max-w-3xl px-6 sm:px-10 pt-12 sm:pt-16 pb-24">
+    <div className="flex-1 mx-auto w-full max-w-xl px-6 sm:px-10 pt-8 sm:pt-10 pb-16">
 
       {/* ── Back to home ──────────────────────────────────────────── */}
       <AnimatedWrapper variant={fadeInUp}>
         <BackToHome />
       </AnimatedWrapper>
 
-      <div className="grid md:grid-cols-[1fr_1fr] gap-16 items-start mt-12">
+      {/* ── Heading ───────────────────────────────────────────────── */}
+      <AnimatedWrapper variant={fadeInUp} delay={0.05}>
+        <h1
+          className="font-display font-semibold text-foreground leading-tight mt-8 mb-7"
+          style={{ fontSize: "clamp(2rem, 5vw, 2.75rem)", letterSpacing: "-0.03em" }}
+        >
+          Let&apos;s start a conversation.
+        </h1>
+      </AnimatedWrapper>
 
-        {/* ── Left: heading ─────────────────────────────────────── */}
-        <AnimatedWrapper variant={fadeInUp} delay={0.05}>
-          <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground mb-4">
-            Contact
-          </p>
-          <h1
-            className="font-display font-semibold text-foreground leading-tight"
-            style={{ fontSize: "clamp(1.75rem, 4vw, 2.25rem)", letterSpacing: "-0.025em" }}
-          >
-            Let&apos;s start a<br />conversation.
-          </h1>
-          <p
-            className="mt-5 font-sans text-muted-foreground leading-relaxed"
-            style={{ fontSize: "clamp(0.875rem, 2vw, 0.9375rem)" }}
-          >
-            Job opportunities, collaborations, or just a question.
-          </p>
-        </AnimatedWrapper>
-
-        {/* ── Right: form ───────────────────────────────────────── */}
+      {/* ── Form ──────────────────────────────────────────────────── */}
         <form
           ref={formRef}
           onSubmit={handleSubmit}
           noValidate
-          className="space-y-8"
+          className="space-y-6"
         >
 
           {/* Name */}
@@ -219,7 +209,7 @@ function ContactForm() {
                 id="message"
                 name="message"
                 required
-                rows={5}
+                rows={4}
                 placeholder="What&apos;s on your mind?"
                 className={`${FIELD_BASE} resize-none`}
               />
@@ -273,7 +263,6 @@ function ContactForm() {
           </AnimatedWrapper>
 
         </form>
-      </div>
     </div>
   );
 }

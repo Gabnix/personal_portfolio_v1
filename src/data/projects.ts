@@ -10,7 +10,7 @@ export const projects: Project[] = [
       "A longer description with more detail about the project, the technical challenges, and the decisions made.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "WebSockets", "Recharts"],
     github: "https://github.com/",
-    live: "https://example.com",
+    live: "/not-found",
     featured: true,
   },
   {
@@ -33,7 +33,7 @@ export const projects: Project[] = [
       "A longer description with more detail about the project, the technical challenges, and the decisions made.",
     tags: ["Python", "FastAPI", "Redis", "Docker"],
     github: "https://github.com/",
-    live: "https://example.com",
+    live: "/not-found",
     featured: true,
   },
 ];
