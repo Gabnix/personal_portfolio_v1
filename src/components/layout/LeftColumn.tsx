@@ -61,6 +61,7 @@ export function LeftColumn() {
     // "About" lives at the very top — scroll to 0 instead of the element
     if (sectionId === "about") {
       e.preventDefault();
+      window.history.pushState(null, "", "/");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
     setActiveSection(sectionId);
@@ -69,6 +70,13 @@ export function LeftColumn() {
     suppressTimerRef.current = setTimeout(() => {
       suppressRef.current = false;
     }, 800);
+  }, []);
+
+  const handleNameClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setActiveSection("");
+    window.history.pushState(null, "", "/");
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, []);
 
   const entry = (delay: number) => ({
@@ -83,7 +91,7 @@ export function LeftColumn() {
       {/* ── Identity ─────────────────────────────────────────────── */}
       <div>
         <motion.div {...entry(0)}>
-          <Link href="/" aria-label="Home">
+          <Link href="/" aria-label="Back to top" onClick={handleNameClick}>
             <h1
               className="font-display font-semibold text-foreground leading-none hover:text-foreground/75 transition-colors duration-200"
               style={{ fontSize: "clamp(2.25rem, 4.5vw, 3.25rem)", letterSpacing: "-0.03em" }}
