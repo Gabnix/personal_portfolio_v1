@@ -4,6 +4,9 @@ import { useEffect } from "react";
 
 export function SpotlightOverlay() {
   useEffect(() => {
+    // Skip spotlight tracking on touch/coarse-pointer devices (phones, tablets)
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+
     const root = document.documentElement;
     const handleMouseMove = (e: MouseEvent) => {
       root.style.setProperty("--mouse-x", `${e.clientX}px`);

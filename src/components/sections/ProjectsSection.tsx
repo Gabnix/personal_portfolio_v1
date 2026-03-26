@@ -13,9 +13,9 @@ export function ProjectsSection() {
 
       {/* ── Sticky section header — mobile only ──────────────────── */}
       <div className="lg:hidden sticky top-0 z-20 -mx-6 sm:-mx-10 px-6 sm:px-10 py-3 mb-3 backdrop-blur-md bg-background/85">
-        <span className="font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-foreground">
+        <h2 className="font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-foreground">
           Projects
-        </span>
+        </h2>
       </div>
 
       <div className="pb-16 lg:py-16">
@@ -52,7 +52,7 @@ export function ProjectsSection() {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`${project.title} on GitHub`}
-                          className="inline-flex items-center justify-center h-7 w-7 rounded text-muted-foreground/50 hover:text-foreground transition-colors duration-200"
+                          className="inline-flex items-center justify-center h-11 w-11 rounded text-muted-foreground/50 hover:text-foreground transition-colors duration-200"
                         >
                           <Github className="h-3.5 w-3.5" aria-hidden="true" />
                         </a>
@@ -63,7 +63,7 @@ export function ProjectsSection() {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`${project.title} live site`}
-                          className="inline-flex items-center justify-center h-7 w-7 rounded text-muted-foreground/50 hover:text-foreground transition-colors duration-200"
+                          className="inline-flex items-center justify-center h-11 w-11 rounded text-muted-foreground/50 hover:text-foreground transition-colors duration-200"
                         >
                           <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                         </a>

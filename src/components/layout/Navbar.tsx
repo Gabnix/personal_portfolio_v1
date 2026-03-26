@@ -78,6 +78,38 @@ export function Navbar() {
     }, 1000);
   };
 
+  // Focus trap for mobile menu
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const menu = mobileMenuRef.current;
+    if (!menu) return;
+
+    // Focus first link when menu opens
+    const focusable = menu.querySelectorAll<HTMLElement>('a, button, [tabindex]:not([tabindex="-1"])');
+    focusable[0]?.focus();
+
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setMobileOpen(false);
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const els = Array.from(menu!.querySelectorAll<HTMLElement>('a, button, [tabindex]:not([tabindex="-1"])'));
+      if (!els.length) return;
+      const first = els[0];
+      const last = els[els.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    }
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [mobileOpen]);
+
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === "/") {
       e.preventDefault();
@@ -103,7 +135,7 @@ export function Navbar() {
             : "bg-transparent"
         )}
       >
-        <nav className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+        <nav aria-label="Main navigation" className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <Link
             href="/"
@@ -194,8 +226,9 @@ export function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: shouldReduceMotion ? 0.01 : 0.25, ease: "easeInOut" }}
             className="fixed inset-0 z-40 bg-background flex flex-col px-6 pt-28 pb-12 md:hidden"
+          ref={mobileMenuRef}
           >
-            <nav className="flex flex-col gap-1">
+            <nav aria-label="Mobile navigation" className="flex flex-col gap-1">
               {NAV_LINKS.map((link, i) => {
                 const isActive = isLinkActive(link.href);
                 const sectionId = link.href.startsWith("/#") ? link.href.slice(2) : null;

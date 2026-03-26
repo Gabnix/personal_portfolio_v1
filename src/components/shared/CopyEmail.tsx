@@ -60,6 +60,10 @@ export function CopyEmail({
         >
           {children}
         </motion.button>
+        {/* Screen reader announcement */}
+        <span className="sr-only" aria-live="polite" aria-atomic="true">
+          {copied ? "Email address copied to clipboard" : ""}
+        </span>
       </span>
 
       {/* Custom cursor label — rendered at root level via portal-like fixed position */}

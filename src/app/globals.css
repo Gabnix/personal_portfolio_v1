@@ -170,12 +170,12 @@
     box-shadow 0.3s ease;
 }
 .ghost-card:hover {
-  background-color: color-mix(in oklch, var(--foreground) 4%, transparent);
-  box-shadow: inset 0 1px 0 0 color-mix(in oklch, var(--foreground) 6%, transparent);
+  background-color: color-mix(in oklch, var(--foreground) 6%, transparent);
+  box-shadow: inset 0 1px 0 0 color-mix(in oklch, var(--foreground) 9%, transparent);
 }
 .dark .ghost-card:hover {
-  background-color: color-mix(in oklch, var(--foreground) 5%, transparent);
-  box-shadow: inset 0 1px 0 0 color-mix(in oklch, var(--foreground) 8%, transparent);
+  background-color: color-mix(in oklch, var(--foreground) 8%, transparent);
+  box-shadow: inset 0 1px 0 0 color-mix(in oklch, var(--foreground) 11%, transparent);
 }
 /* Pills intensify on card hover */
 .ghost-card:hover .tech-pill {

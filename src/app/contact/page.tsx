@@ -129,7 +129,7 @@ function ContactForm() {
 
   /* ── Form ───────────────────────────────────────────────────── */
   return (
-    <div className="flex-1 mx-auto w-full max-w-xl px-6 sm:px-10 pt-8 sm:pt-10 pb-16">
+    <div className="flex-1 mx-auto w-full max-w-3xl px-6 sm:px-10 pt-8 sm:pt-10 pb-16">
 
       {/* ── Back to home ──────────────────────────────────────────── */}
       <AnimatedWrapper variant={fadeInUp}>
@@ -139,7 +139,7 @@ function ContactForm() {
       {/* ── Heading ───────────────────────────────────────────────── */}
       <AnimatedWrapper variant={fadeInUp} delay={0.05}>
         <h1
-          className="font-display font-semibold text-foreground leading-tight mt-8 mb-7"
+          className="font-display font-semibold text-foreground leading-tight mt-8 mb-7 max-w-xl"
           style={{ fontSize: "clamp(2rem, 5vw, 2.75rem)", letterSpacing: "-0.03em" }}
         >
           Let&apos;s start a conversation.
@@ -151,7 +151,7 @@ function ContactForm() {
           ref={formRef}
           onSubmit={handleSubmit}
           noValidate
-          className="space-y-6"
+          className="space-y-6 max-w-xl"
         >
 
           {/* Name */}
@@ -170,6 +170,8 @@ function ContactForm() {
                 required
                 autoComplete="name"
                 placeholder="Your name"
+                aria-invalid={formState === "error" || undefined}
+                aria-describedby={formState === "error" ? "form-error" : undefined}
                 className={FIELD_BASE}
               />
             </div>
@@ -191,6 +193,8 @@ function ContactForm() {
                 required
                 autoComplete="email"
                 placeholder="you@example.com"
+                aria-invalid={formState === "error" || undefined}
+                aria-describedby={formState === "error" ? "form-error" : undefined}
                 className={FIELD_BASE}
               />
             </div>
@@ -211,21 +215,26 @@ function ContactForm() {
                 required
                 rows={4}
                 placeholder="What&apos;s on your mind?"
+                aria-invalid={formState === "error" || undefined}
+                aria-describedby={formState === "error" ? "form-error" : undefined}
                 className={`${FIELD_BASE} resize-none`}
               />
             </div>
           </AnimatedWrapper>
 
           {/* Error */}
-          {formState === "error" && errorMsg && (
-            <p className="font-sans text-sm text-destructive leading-relaxed">{errorMsg}</p>
-          )}
+          <div aria-live="assertive" aria-atomic="true">
+            {formState === "error" && errorMsg && (
+              <p id="form-error" className="font-sans text-sm text-destructive leading-relaxed">{errorMsg}</p>
+            )}
+          </div>
 
           {/* Submit + reCAPTCHA attribution */}
           <AnimatedWrapper variant={fadeInUp} delay={0.26}>
             <button
               type="submit"
               disabled={formState === "loading"}
+              aria-busy={formState === "loading"}
               className="inline-flex items-center gap-2 min-h-[44px] font-sans text-base font-semibold text-foreground/85 hover:text-accent-signal transition-colors duration-300 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed group"
             >
               {formState === "loading" ? (
