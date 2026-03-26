@@ -16,7 +16,7 @@ export default function NotFound() {
   });
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-dvh flex flex-col">
       <title>404 — Jim Ling</title>
 
       {/* ── Main content — fills remaining height above footer ──── */}
