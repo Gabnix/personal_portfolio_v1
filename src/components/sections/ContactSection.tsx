@@ -40,7 +40,7 @@ export function ContactSection() {
 
             <CopyEmail
               email={SITE_EMAIL}
-              className="inline-flex items-center font-sans text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 cursor-pointer"
+              className="inline-flex items-center min-h-[44px] font-sans text-sm font-medium text-foreground/55 hover:text-foreground/85 active:text-foreground transition-colors duration-200 cursor-pointer"
               aria-label="Copy email address"
             >
               Copy email address
