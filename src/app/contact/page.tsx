@@ -5,7 +5,8 @@ import {
   GoogleReCaptchaProvider,
   useGoogleReCaptcha,
 } from "react-google-recaptcha-v3";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { AnimatedWrapper } from "@/components/shared/AnimatedWrapper";
 import { BackToHome } from "@/components/shared/BackToHome";
 import { Footer } from "@/components/layout/Footer";
@@ -108,6 +109,16 @@ function ContactForm() {
               >
                 Thanks for reaching out. I'll get back to you within 24 hours.
               </p>
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 mt-8 min-h-[44px] font-sans text-base font-semibold text-foreground/85 hover:text-accent-signal transition-colors duration-300 group"
+              >
+                <ArrowLeft
+                  className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5"
+                  aria-hidden="true"
+                />
+                Back to home
+              </Link>
             </div>
           </AnimatedWrapper>
         </div>
@@ -217,7 +228,7 @@ function ContactForm() {
 
           {/* Error */}
           {formState === "error" && errorMsg && (
-            <p className="text-sm text-destructive leading-relaxed">{errorMsg}</p>
+            <p className="font-sans text-sm text-destructive leading-relaxed">{errorMsg}</p>
           )}
 
           {/* Submit + reCAPTCHA attribution */}
