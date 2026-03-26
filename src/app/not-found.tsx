@@ -64,8 +64,7 @@ export default function NotFound() {
               style={{ fontSize: "clamp(0.875rem, 1.8vw, 0.9375rem)" }}
             >
               Our lead architect spent all morning on this path, but one crucial
-              piece rolled away and the whole thing came down. We&apos;re
-              currently in a bit of a structural crisis.
+              piece rolled away and the whole thing came down. 
             </motion.p>
 
             <motion.div {...entry(0.26)} className="mt-6">
