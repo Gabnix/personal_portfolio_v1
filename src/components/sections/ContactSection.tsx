@@ -29,7 +29,7 @@ export function ContactSection() {
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 font-sans text-base font-semibold text-foreground/85 hover:text-accent-signal transition-colors duration-300 group"
+              className="inline-flex items-center gap-2.5 px-5 py-2.5 min-h-[44px] font-sans text-sm font-semibold rounded-lg border border-foreground/15 text-foreground/85 hover:border-accent-signal hover:text-accent-signal transition-colors duration-200 group"
             >
               Send a message
               <ArrowUpRight
