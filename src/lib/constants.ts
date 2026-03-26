@@ -11,10 +11,10 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-export const SITE_EMAIL = "gabrielling@gmail.com";
+export const SITE_EMAIL = "hello@jimling.dev";
 
 export const SOCIAL_LINKS = {
   github: "https://github.com/Gabnix",
   linkedin: "https://www.linkedin.com/in/gabnix/",
-  email: "mailto:gabrielling@gmail.com",
+  email: "mailto:hello@jimling.dev",
 };
