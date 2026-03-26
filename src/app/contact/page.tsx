@@ -132,7 +132,7 @@ function ContactForm() {
 
   /* ── Form ───────────────────────────────────────────────────── */
   return (
-    <div className="flex-1 overflow-auto mx-auto w-full max-w-3xl px-6 sm:px-10 pt-8 sm:pt-10 pb-16">
+    <div className="flex-1 mx-auto w-full max-w-3xl px-6 sm:px-10 pt-8 sm:pt-10 pb-16">
 
       {/* ── Back to home ──────────────────────────────────────────── */}
       <AnimatedWrapper variant={fadeInUp}>
@@ -283,7 +283,7 @@ export default function ContactPage() {
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   return (
-    <div className="h-dvh flex flex-col">
+    <div className="min-h-dvh flex flex-col">
       {siteKey ? (
         <GoogleReCaptchaProvider reCaptchaKey={siteKey}>
           <ContactForm />

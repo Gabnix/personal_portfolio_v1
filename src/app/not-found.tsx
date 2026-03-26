@@ -16,7 +16,7 @@ export default function NotFound() {
   });
 
   return (
-    <div className="h-dvh flex flex-col">
+    <div className="min-h-dvh flex flex-col">
       <title>404 — Jim Ling</title>
 
       {/* ── Main content — fills remaining height above footer ──── */}
@@ -64,7 +64,8 @@ export default function NotFound() {
               style={{ fontSize: "clamp(0.875rem, 1.8vw, 0.9375rem)" }}
             >
               Our lead architect spent all morning on this path, but one crucial
-              piece rolled away and the whole thing came down. 
+              piece rolled away and the whole thing came down. We&apos;re
+              currently in a bit of a structural crisis.
             </motion.p>
 
             <motion.div {...entry(0.26)} className="mt-6">
