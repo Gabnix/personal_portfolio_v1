@@ -283,7 +283,7 @@ export default function ContactPage() {
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   return (
-    <div className="min-h-dvh flex flex-col">
+    <>
       {siteKey ? (
         <GoogleReCaptchaProvider reCaptchaKey={siteKey}>
           <ContactForm />
@@ -292,6 +292,6 @@ export default function ContactPage() {
         <ContactForm />
       )}
       <Footer />
-    </div>
+    </>
   );
 }
